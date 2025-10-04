@@ -8,6 +8,7 @@
 
 #tier-list {
   max-width: 1200px; /* largeur fixe */
+  width: 100%;
 }
 
 /* Bouton */
