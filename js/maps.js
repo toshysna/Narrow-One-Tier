@@ -44,19 +44,29 @@ fetch("js/maps.json")
         dragImage.style.pointerEvents = "none";
         document.body.appendChild(dragImage);
 
-        // Attente du chargement de l'image pour pouvoir l'utiliser comme drag preview
-        dragImage.onload = () => {
+        if (dragImage.complete) {
+          // Image déjà chargée (Chrome en cache) → on appelle directement
           e.dataTransfer.setDragImage(
             dragImage,
             displayedWidth / 2,
             displayedHeight / 2
           );
-
-          // Suppression de l'image temporaire juste après
           setTimeout(() => {
             document.body.removeChild(dragImage);
           }, 0);
-        };
+        } else {
+          // Sinon, on attend le onload (Firefox, ou si pas en cache)
+          dragImage.onload = () => {
+            e.dataTransfer.setDragImage(
+              dragImage,
+              displayedWidth / 2,
+              displayedHeight / 2
+            );
+            setTimeout(() => {
+              document.body.removeChild(dragImage);
+            }, 0);
+          };
+        }
 
         mapCard.classList.add("dragging");
       });
