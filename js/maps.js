@@ -13,9 +13,6 @@ fetch("js/maps.json")
       img.src = map.image;
       img.alt = map.name;
 
-      const title = document.createElement("p");
-      title.textContent = map.name;
-
       mapCard.appendChild(img);
       mapCard.appendChild(title); // <- il manquait ça
       mapsContainer.appendChild(mapCard);
