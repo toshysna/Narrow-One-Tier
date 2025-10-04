@@ -1,0 +1,61 @@
+@font-face {
+  font-family: "BlueNight-Regular";
+  src: url("../assets/fonts/BlueNight-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@media (max-width: 600px) {
+  /* pour que ça s'adapte aux ecrans */
+  .map-card {
+    width: 120px; /* réduit la taille des cartes */
+  }
+}
+
+body {
+  background-image: url("../assets/bg/alleys-bg-color-corrected.jpg"); /* Charge image de fond */
+  background-size: cover; /* Image prend toute la surface sans déformation */
+  background-position: center; /* Centre l'image */
+  background-attachment: fixed; /* L'image reste fixe quand on scroll */
+
+  font-family: BlueNight-Regular;
+  margin: 0;
+  padding: 20px;
+  letter-spacing: 3px;
+}
+
+.map-card {
+  display: inline-block; /* la carte s'adapte aux dimensions de l'image */
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: auto;
+  text-align: center;
+}
+
+.map-card img {
+  display: block; /* Elimine les espaces blancs sous l'image */
+  width: 100%; /* L'image prend toute la largeur de la carte */
+  height: 145px; /* Hauteur fixe pour toute les images */
+  object-fit: cover; /* L'image remplit son cadre sans deformation */
+  max-width: 100%; /* Empêche l'image de dépasser la largeur de la carte */
+}
+
+.map-card p {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+#maps {
+  display: flex; /* active flexbox */
+  flex-wrap: wrap; /* les cartes passent à la ligne selon taille ecran */
+  gap: 1px; /* espace entre les cartes */
+  justify-content: left; /* centre les cartes dans le conteneur */
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  width: 75%;
+  padding-bottom: 10px;
+}

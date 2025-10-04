@@ -1,0 +1,27 @@
+[
+  { "id": "alleys", "name": "ALLEYS", "image": "assets/maps/Alleys.png" },
+  { "id": "arch", "name": "ARCH", "image": "assets/maps/Arch.png" },
+  { "id": "arena", "name": "ARENA", "image": "assets/maps/Arena.png" },
+  { "id": "castles", "name": "CASTLES", "image": "assets/maps/Castles.png" },
+  { "id": "desert", "name": "DESERT", "image": "assets/maps/Desert.png" },
+  { "id": "fields", "name": "FIELDS", "image": "assets/maps/Fields.png" },
+  { "id": "forts", "name": "FORTS", "image": "assets/maps/Forts.png" },
+  {
+    "id": "gatehouse",
+    "name": "GATEHOUSE",
+    "image": "assets/maps/Gatehouse.png"
+  },
+  {
+    "id": "graveyard",
+    "name": "GRAVEYARD",
+    "image": "assets/maps/Graveyard.png"
+  },
+  { "id": "halls", "name": "HALLS", "image": "assets/maps/Halls.png" },
+  { "id": "hills", "name": "HILLS", "image": "assets/maps/Hills.png" },
+  { "id": "jungle", "name": "JUNGLE", "image": "assets/maps/Jungle.png" },
+  { "id": "ruins", "name": "RUINS", "image": "assets/maps/Ruins.png" },
+  { "id": "temple", "name": "TEMPLE", "image": "assets/maps/Temple.png" },
+  { "id": "tombs", "name": "TOMBS", "image": "assets/maps/Tombs.png" },
+  { "id": "towers", "name": "TOWERS", "image": "assets/maps/Towers.png" },
+  { "id": "wall", "name": "WALL", "image": "assets/maps/Wall.png" }
+]

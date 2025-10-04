@@ -1,0 +1,25 @@
+#tier-list-container {
+  display: flex;
+  justify-content: center; /* centre le groupe tableau+bouton */
+  align-items: flex-start;
+  gap: 10px; /* espace entre tableau et bouton */
+  margin-top: 20px;
+}
+
+#tier-list {
+  max-width: 1200px; /* largeur fixe */
+}
+
+/* Bouton */
+#capture-btn {
+  all: unset;
+  cursor: pointer;
+}
+#capture-btn img {
+  width: 80px;
+  height: 80px;
+  transition: filter 0.2s;
+}
+#capture-btn img:hover {
+  filter: brightness(0.8);
+}
