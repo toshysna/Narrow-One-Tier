@@ -21,7 +21,7 @@ fetch("js/maps.json")
       mapCard.addEventListener("dragstart", (e) => {
         e.dataTransfer.setData("text/plain", mapCard.id);
 
-        // ✅ Créer une version réduite de l'image pour le drag preview
+        // Je fais une version réduite de l'image pour le drag preview
         const dragPreview = img.cloneNode();
 
         Object.assign(dragPreview.style, {
@@ -34,12 +34,12 @@ fetch("js/maps.json")
 
         document.body.appendChild(dragPreview);
 
-        // ✅ Utiliser le dragPreview comme image de drag
+        // J'utilise le dragPreview comme image de drag
         e.dataTransfer.setDragImage(dragPreview, 50, 50); // offsets ajustables
 
         mapCard.classList.add("dragging");
 
-        // ✅ Supprimer le dragPreview juste après
+        //  Je sup le dragPreview juste après
         setTimeout(() => {
           document.body.removeChild(dragPreview);
         }, 0);
