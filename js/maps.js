@@ -14,7 +14,6 @@ fetch("js/maps.json")
       img.alt = map.name;
 
       mapCard.appendChild(img);
-      mapCard.appendChild(title); // <- il manquait ça
       mapsContainer.appendChild(mapCard);
 
       mapCard.setAttribute("draggable", "true");
