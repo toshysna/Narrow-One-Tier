@@ -1,7 +1,7 @@
 // Pour invoquer la div #maps dans la variable mapsContainer
 const mapsContainer = document.getElementById("maps");
 
-// Pour charger le fichier JSON
+// Chargement du fichier JSON contenant les maps
 fetch("js/maps.json")
   .then((response) => response.json())
   .then((maps) => {
@@ -21,35 +21,53 @@ fetch("js/maps.json")
       mapCard.addEventListener("dragstart", (e) => {
         e.dataTransfer.setData("text/plain", mapCard.id);
 
-        // Je fais une version réduite de l'image pour le drag preview
-        const dragPreview = img.cloneNode();
+        // Récupère la taille réellement affichée de l'image
+        const rect = img.getBoundingClientRect();
+        const displayedWidth = rect.width;
+        const displayedHeight = rect.height;
 
-        Object.assign(dragPreview.style, {
-          width: "100px", // ajustable selon besoin
-          height: "auto",
-          position: "absolute",
-          top: "-9999px",
-          pointerEvents: "none",
-        });
+        // Création d'un canvas de même taille
+        const canvas = document.createElement("canvas");
+        canvas.width = displayedWidth;
+        canvas.height = displayedHeight;
 
-        document.body.appendChild(dragPreview);
+        const ctx = canvas.getContext("2d");
 
-        // J'utilise le dragPreview comme image de drag
-        e.dataTransfer.setDragImage(dragPreview, 50, 50); // offsets ajustables
+        // Dessine l'image source à la taille affichée
+        ctx.drawImage(img, 0, 0, displayedWidth, displayedHeight);
+
+        // Création d'une image temporaire à partir du canvas
+        const dragImage = new Image();
+        dragImage.src = canvas.toDataURL();
+        dragImage.style.position = "absolute";
+        dragImage.style.top = "-9999px";
+        dragImage.style.pointerEvents = "none";
+        document.body.appendChild(dragImage);
+
+        // Attente du chargement de l'image pour pouvoir l'utiliser comme drag preview
+        dragImage.onload = () => {
+          e.dataTransfer.setDragImage(
+            dragImage,
+            displayedWidth / 2,
+            displayedHeight / 2
+          );
+
+          // Suppression de l'image temporaire juste après
+          setTimeout(() => {
+            document.body.removeChild(dragImage);
+          }, 0);
+        };
 
         mapCard.classList.add("dragging");
-
-        //  Je sup le dragPreview juste après
-        setTimeout(() => {
-          document.body.removeChild(dragPreview);
-        }, 0);
       });
 
       mapCard.addEventListener("dragend", () => {
         mapCard.classList.remove("dragging");
       });
 
+      // Affectation d'un ID unique à chaque carte
       mapCard.id = `card-${map.id}`;
     });
+
     console.log(maps);
   });
