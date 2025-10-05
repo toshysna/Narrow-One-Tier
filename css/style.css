@@ -1,7 +1,7 @@
 @font-face {
   font-family: "BlueNight-Regular";
   src: url("../assets/fonts/BlueNight-Regular.ttf") format("truetype");
-  font-weight: normal;
+  font-weight: lighter;
   font-style: normal;
 }
 @media (max-width: 600px) {
