@@ -1,20 +1,22 @@
 #tier-list-container {
   display: flex;
-  justify-content: center; /* centre le groupe tableau+bouton */
+  justify-content: flex-start; /* centre le groupe tableau+bouton */
   align-items: flex-start;
   gap: 10px; /* espace entre tableau et bouton */
-  margin-top: 20px;
+  margin: 0 auto;
+  width: 1200px;
 }
 
 #tier-list {
-  max-width: 1200px; /* largeur fixe */
-  width: 100%;
+  width: 1200px;
 }
 
 /* Bouton */
 #capture-btn {
   all: unset;
   cursor: pointer;
+  margin: 0;
+  padding: 0;
 }
 #capture-btn img {
   width: 80px;
