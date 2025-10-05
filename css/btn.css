@@ -4,11 +4,11 @@
   align-items: flex-start;
   gap: 10px; /* espace entre tableau et bouton */
   margin: 0 auto;
-  width: 1200px;
+  width: 1300px;
 }
 
 #tier-list {
-  width: 1200px;
+  width: 1300px;
 }
 
 /* Bouton */

@@ -34,7 +34,7 @@ body {
 .map-card img {
   display: block; /* Elimine les espaces blancs sous l'image */
   width: 100%; /* L'image prend toute la largeur de la carte */
-  height: 145px; /* Hauteur fixe pour toute les images */
+  height: 120px; /* Hauteur fixe pour toute les images */
   object-fit: cover; /* L'image remplit son cadre sans deformation */
   max-width: 100%; /* Empêche l'image de dépasser la largeur de la carte */
 }
