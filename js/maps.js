@@ -1,8 +1,16 @@
+// Détection automatique du nom de la page
+const pageName = window.location.pathname.split("/").pop().toLowerCase();
+
+// Mapping entre page et fichier JSON
+const jsonFile = pageName.includes("bow-tier")
+  ? "js/bows.json"
+  : "js/maps.json"; // fallback par défaut
+
 // Pour invoquer la div #maps dans la variable mapsContainer
 const mapsContainer = document.getElementById("maps");
 
 // Chargement du fichier JSON contenant les maps
-fetch("js/maps.json")
+fetch(jsonFile)
   .then((response) => response.json())
   .then((maps) => {
     maps.forEach((map) => {

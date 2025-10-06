@@ -1,0 +1,8 @@
+[
+  { "id": "bow1", "name": "BOW 1", "image": "assets/bows/BOW1.png" },
+  { "id": "bow2", "name": "BOW 2", "image": "assets/bows/BOW2.png" },
+  { "id": "bow3", "name": "BOW 3", "image": "assets/bows/BOW3.png" },
+  { "id": "bow4", "name": "BOW 4", "image": "assets/bows/BOW4.png" },
+  { "id": "bow5", "name": "BOW 5", "image": "assets/bows/BOW5.png" },
+  { "id": "bow6", "name": "BOW 6", "image": "assets/bows/BOW6.png" }
+]

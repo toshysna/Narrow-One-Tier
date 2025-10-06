@@ -59,3 +59,7 @@
     -Et enfin une pour déplacer la carte
 31. Ensuite j'ai fait en sorte de pouvoir deplacer les cartes à gauche et à droite au sein même du tableau en fonction de la position du curseur lors du dragging
 32. J'ai ajouté un bouton qui permet de sauvegarder la tier list sous le format d'une image png.
+33. J'ai créé un tableau json pour héberger ma 2ème tier list qui concernera les bows.
+34. Je duplique l'index.html de la page maps puis je le personalise pour héberger dans le futur ma bow tier list.
+35. Je crée mes boutons icones puis je relie les deux pages via ces boutons nav à l'interieur du dvi container du tableau tier list pour pouvoir le centrer.
+36. Enfin, j'écris la ligne const pageName = window.location.pathname.split("/").pop().toLowerCase(); pour détecter automatiquement la page de mon site et me permettre d'ensuite mettre une condition: si nom de la page = bow-tier alors appliquer le tableau bows.json sinon appliquer maps.json par defaut.
