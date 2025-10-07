@@ -12,15 +12,24 @@
 }
 
 body {
-  background-image: url("../assets/bg/alleys-bg-color-corrected.jpg"); /* Charge image de fond */
-  background-size: cover; /* Image prend toute la surface sans déformation */
-  background-position: center; /* Centre l'image */
-  background-attachment: fixed; /* L'image reste fixe quand on scroll */
-
   font-family: BlueNight-Regular;
   margin: 0;
   padding: 20px;
   letter-spacing: 3px;
+}
+
+body.page-maps {
+  background-image: url("../assets/bg/alleys-bg-color-corrected.jpg");
+  background-size: cover; /* Image prend toute la surface sans déformation */
+  background-position: center; /* Centre l'image */
+  background-attachment: fixed; /* L'image reste fixe quand on scroll */
+}
+
+body.page-bows {
+  background-image: url("../assets/bg/bows-crop-1-C.jpg");
+  background-size: cover; /* Image prend toute la surface sans déformation */
+  background-position: center; /* Centre l'image */
+  background-attachment: fixed; /* L'image reste fixe quand on scroll */
 }
 
 .map-card {
