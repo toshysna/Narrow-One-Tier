@@ -36,6 +36,7 @@
   overflow-wrap: break-word;
   white-space: normal; /* permet le retour à la ligne automatique */
   overflow: hidden;
+  text-transform: uppercase;
 }
 
 /* Pour chaque rangée conteneur de cartes */

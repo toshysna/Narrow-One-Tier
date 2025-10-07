@@ -8,6 +8,9 @@ tiers.forEach((tierName) => {
   const tierTitle = document.createElement("h2"); // ajoute balise h2 au row
   tierTitle.textContent = tierName; // definit le texte par defaut (S,A etc)
   tierTitle.contentEditable = true; // permet de renommer
+  // Empêche qu'on y dépose des éléments (cartes par ex.)
+  tierTitle.addEventListener("dragover", (e) => e.preventDefault());
+  tierTitle.addEventListener("drop", (e) => e.preventDefault());
 
   const tierCards = document.createElement("div"); //create div vide qui va acceuillir toute les cartes
   tierCards.classList.add("tier-cards");
