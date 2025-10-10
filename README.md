@@ -63,3 +63,4 @@
 34. Je duplique l'index.html de la page maps puis je le personalise pour héberger dans le futur ma bow tier list.
 35. Je crée mes boutons icones puis je relie les deux pages via ces boutons nav à l'interieur du dvi container du tableau tier list pour pouvoir le centrer.
 36. Enfin, j'écris la ligne const pageName = window.location.pathname.split("/").pop().toLowerCase(); pour détecter automatiquement la page de mon site et me permettre d'ensuite mettre une condition: si nom de la page = bow-tier alors appliquer le tableau bows.json sinon appliquer maps.json par defaut.
+37. Ajout 3ème Tier-list des melees

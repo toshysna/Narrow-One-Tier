@@ -1,0 +1,392 @@
+[
+  {
+    "id": "1_hand_sword",
+    "name": "1 HAND SWORD",
+    "image": "assets/melees/1 HAND SWORD.png"
+  },
+  {
+    "id": "1_handed_ottoman_axe",
+    "name": "1 HANDED OTTOMAN AXE",
+    "image": "assets/melees/1 HANDED OTTOMAN AXE.png"
+  },
+  {
+    "id": "2_hand_sword",
+    "name": "2 HAND SWORD",
+    "image": "assets/melees/2 HAND SWORD.png"
+  },
+  {
+    "id": "2_handed_ottoman_axe",
+    "name": "2 HANDED OTTOMAN AXE",
+    "image": "assets/melees/2 HANDED OTTOMAN AXE.png"
+  },
+  {
+    "id": "2_handed_viking_axe",
+    "name": "2 HANDED VIKING AXE",
+    "image": "assets/melees/2 HANDED VIKING AXE.png"
+  },
+  {
+    "id": "barbarian_hammer_light",
+    "name": "BARBARIAN HAMMER LIGHT",
+    "image": "assets/melees/BARBARIAN HAMMER LIGHT.png"
+  },
+  {
+    "id": "barbarian_hammer",
+    "name": "BARBARIAN HAMMER",
+    "image": "assets/melees/BARBARIAN HAMMER.png"
+  },
+  {
+    "id": "barbarian_knife",
+    "name": "BARBARIAN KNIFE",
+    "image": "assets/melees/BARBARIAN KNIFE.png"
+  },
+  {
+    "id": "barbarian_light_spear",
+    "name": "BARBARIAN LIGHT SPEAR",
+    "image": "assets/melees/BARBARIAN LIGHT SPEAR.png"
+  },
+  {
+    "id": "barbarian_spear",
+    "name": "BARBARIAN SPEAR",
+    "image": "assets/melees/BARBARIAN SPEAR.png"
+  },
+  {
+    "id": "black_katana",
+    "name": "BLACK KATANA",
+    "image": "assets/melees/BLACK KATANA.png"
+  },
+  {
+    "id": "boatar",
+    "name": "BOATAR",
+    "image": "assets/melees/BOATAR.png"
+  },
+  {
+    "id": "broom",
+    "name": "BROOM",
+    "image": "assets/melees/BROOM.png"
+  },
+  {
+    "id": "butcher_cleaver_pointed",
+    "name": "BUTCHER CLEAVER POINTED",
+    "image": "assets/melees/BUTCHER CLEAVER POINTED.png"
+  },
+  {
+    "id": "dagger",
+    "name": "DAGGER",
+    "image": "assets/melees/DAGGER.png"
+  },
+  {
+    "id": "egyptian_fan_axe",
+    "name": "EGYPTIAN FAN AXE",
+    "image": "assets/melees/EGYPTIAN FAN AXE.png"
+  },
+  {
+    "id": "epsilon_axe",
+    "name": "EPSILON AXE",
+    "image": "assets/melees/EPSILON AXE.png"
+  },
+  {
+    "id": "falx",
+    "name": "FALX",
+    "image": "assets/melees/FALX.png"
+  },
+  {
+    "id": "fangtianji",
+    "name": "FANGTIANJI",
+    "image": "assets/melees/FANGTIANJI.png"
+  },
+  {
+    "id": "farmer_sickle",
+    "name": "FARMER SICKLE",
+    "image": "assets/melees/FARMER SICKLE.png"
+  },
+  {
+    "id": "fearless_handle",
+    "name": "FEARLESS HANDLE",
+    "image": "assets/melees/FEARLESS HANDLE.png"
+  },
+  {
+    "id": "flachion_sword",
+    "name": "FLACHION SWORD",
+    "image": "assets/melees/FLACHION SWORD.png"
+  },
+  {
+    "id": "flamgberge",
+    "name": "FLAMGBERGE",
+    "image": "assets/melees/FLAMGBERGE.png"
+  },
+  {
+    "id": "flower_hammer",
+    "name": "FLOWER HAMMER",
+    "image": "assets/melees/FLOWER HAMMER.png"
+  },
+  {
+    "id": "fork",
+    "name": "FORK",
+    "image": "assets/melees/FORK.png"
+  },
+  {
+    "id": "frying_pan",
+    "name": "FRYING PAN",
+    "image": "assets/melees/FRYING PAN.png"
+  },
+  {
+    "id": "gladius",
+    "name": "GLADIUS",
+    "image": "assets/melees/GLADIUS.png"
+  },
+  {
+    "id": "godendag",
+    "name": "GODENDAG",
+    "image": "assets/melees/GODENDAG.png"
+  },
+  {
+    "id": "guard_keys",
+    "name": "GUARD KEYS",
+    "image": "assets/melees/GUARD KEYS.png"
+  },
+  {
+    "id": "halberd",
+    "name": "HALBERD",
+    "image": "assets/melees/HALBERD.png"
+  },
+  {
+    "id": "heavy_egyptian_axe",
+    "name": "HEAVY EGYPTIAN AXE",
+    "image": "assets/melees/HEAVY EGYPTIAN AXE.png"
+  },
+  {
+    "id": "heavy_guard_halberd",
+    "name": "HEAVY GUARD HALBERD",
+    "image": "assets/melees/HEAVY GUARD HALBERD.png"
+  },
+  {
+    "id": "heavy_morning_star",
+    "name": "HEAVY MORNING STAR",
+    "image": "assets/melees/HEAVY MORNING STAR.png"
+  },
+  {
+    "id": "heavy_spear",
+    "name": "HEAVY SPEAR",
+    "image": "assets/melees/HEAVY SPEAR.png"
+  },
+  {
+    "id": "kanabo",
+    "name": "KANABO",
+    "image": "assets/melees/KANABO.png"
+  },
+  {
+    "id": "khopesh_gold",
+    "name": "KHOPESH GOLD",
+    "image": "assets/melees/KHOPESH GOLD.png"
+  },
+  {
+    "id": "khopesh",
+    "name": "KHOPESH",
+    "image": "assets/melees/KHOPESH.png"
+  },
+  {
+    "id": "kunai",
+    "name": "KUNAI",
+    "image": "assets/melees/KUNAI.png"
+  },
+  {
+    "id": "light_egyptian_axe",
+    "name": "LIGHT EGYPTIAN AXE",
+    "image": "assets/melees/LIGHT EGYPTIAN AXE.png"
+  },
+  {
+    "id": "light_guard_halberd",
+    "name": "LIGHT GUARD HALBERD",
+    "image": "assets/melees/LIGHT GUARD HALBERD.png"
+  },
+  {
+    "id": "light_mace",
+    "name": "LIGHT MACE",
+    "image": "assets/melees/LIGHT MACE.png"
+  },
+  {
+    "id": "light_tribe_hammer",
+    "name": "LIGHT TRIBE HAMMER",
+    "image": "assets/melees/LIGHT TRIBE HAMMER.png"
+  },
+  {
+    "id": "light_tribe_spear",
+    "name": "LIGHT TRIBE SPEAR",
+    "image": "assets/melees/LIGHT TRIBE SPEAR.png"
+  },
+  {
+    "id": "light_viking_axe",
+    "name": "LIGHT VIKING AXE",
+    "image": "assets/melees/LIGHT VIKING AXE.png"
+  },
+  {
+    "id": "light_viking_hammer",
+    "name": "LIGHT VIKING HAMMER",
+    "image": "assets/melees/LIGHT VIKING HAMMER.png"
+  },
+  {
+    "id": "long_mace",
+    "name": "LONG MACE",
+    "image": "assets/melees/LONG MACE.png"
+  },
+  {
+    "id": "lost_crown_crown",
+    "name": "LOST CROWN SWORD",
+    "image": "assets/melees/LOST CROWN SWORD.png"
+  },
+  {
+    "id": "maul",
+    "name": "MAUL",
+    "image": "assets/melees/MAUL.png"
+  },
+  {
+    "id": "morning_star",
+    "name": "MORNING STAR",
+    "image": "assets/melees/MORNING STAR.png"
+  },
+  {
+    "id": "naginata",
+    "name": "NAGINATA",
+    "image": "assets/melees/NAGINATA.png"
+  },
+  {
+    "id": "ottoman_scimitar",
+    "name": "OTTOMAN SCIMITAR",
+    "image": "assets/melees/OTTOMAN SCIMITAR.png"
+  },
+  {
+    "id": "oud",
+    "name": "OUD",
+    "image": "assets/melees/OUD.png"
+  },
+  {
+    "id": "pelican_sword",
+    "name": "PELICAN SWORD",
+    "image": "assets/melees/PELICAN SWORD.png"
+  },
+  {
+    "id": "persian_scimitar",
+    "name": "PERSIAN SCIMITAR",
+    "image": "assets/melees/PERSIAN SCIMITAR.png"
+  },
+  {
+    "id": "pickaxe",
+    "name": "PICKAXE",
+    "image": "assets/melees/PICKAXE.png"
+  },
+  {
+    "id": "pilum",
+    "name": "PILUM",
+    "image": "assets/melees/PILUM.png"
+  },
+  {
+    "id": "pitchfork",
+    "name": "PITCHFORK",
+    "image": "assets/melees/PITCHFORK.png"
+  },
+  {
+    "id": "retiarius_trident_light",
+    "name": "RETIARIUS TRIDENT LIGHT",
+    "image": "assets/melees/RETIARIUS TRIDENT LIGHT.png"
+  },
+  {
+    "id": "retiarius_trident",
+    "name": "RETIARIUS TRIDENT",
+    "image": "assets/melees/RETIARIUS TRIDENT.png"
+  },
+  {
+    "id": "sai",
+    "name": "SAI",
+    "image": "assets/melees/SAI.png"
+  },
+  {
+    "id": "scythe",
+    "name": "SCYTHE",
+    "image": "assets/melees/SCYTHE.png"
+  },
+  {
+    "id": "sharpened_branch",
+    "name": "SHARPENED BRANCH",
+    "image": "assets/melees/SHARPENED BRANCH.png"
+  },
+  {
+    "id": "short_spear",
+    "name": "SHORT SPEAR",
+    "image": "assets/melees/SHORT SPEAR.png"
+  },
+  {
+    "id": "short_sword",
+    "name": "SHORT SWORD",
+    "image": "assets/melees/SHORT SWORD.png"
+  },
+  {
+    "id": "shovel",
+    "name": "SHOVEL",
+    "image": "assets/melees/SHOVEL.png"
+  },
+  {
+    "id": "sica",
+    "name": "SICA",
+    "image": "assets/melees/SICA.png"
+  },
+  {
+    "id": "small_maul",
+    "name": "SMALL MAUL",
+    "image": "assets/melees/SMALL MAUL.png"
+  },
+  {
+    "id": "spiked_bat",
+    "name": "SPIKED BAT",
+    "image": "assets/melees/SPIKED BAT.png"
+  },
+  {
+    "id": "spiked_mace",
+    "name": "SPIKED MACE",
+    "image": "assets/melees/SPIKED MACE.png"
+  },
+  {
+    "id": "spoon",
+    "name": "SPOON",
+    "image": "assets/melees/SPOON.png"
+  },
+  {
+    "id": "sword_broken",
+    "name": "SWORD BROKEN",
+    "image": "assets/melees/SWORD BROKEN.png"
+  },
+  {
+    "id": "tribe_dagger",
+    "name": "TRIBE DAGGER",
+    "image": "assets/melees/TRIBE DAGGER.png"
+  },
+  {
+    "id": "tribe_hammer",
+    "name": "TRIBE HAMMER",
+    "image": "assets/melees/TRIBE HAMMER.png"
+  },
+  {
+    "id": "tribe_spear",
+    "name": "TRIBE SPEAR",
+    "image": "assets/melees/TRIBE SPEAR.png"
+  },
+  {
+    "id": "tribe_sword",
+    "name": "TRIBE SWORD",
+    "image": "assets/melees/TRIBE SWORD.png"
+  },
+  {
+    "id": "viking_hammer",
+    "name": "VIKING HAMMER",
+    "image": "assets/melees/VIKING HAMMER.png"
+  },
+  {
+    "id": "wood_saw",
+    "name": "WOOD SAW",
+    "image": "assets/melees/WOOD SAW.png"
+  },
+  {
+    "id": "zweihander",
+    "name": "ZWEIHANDER",
+    "image": "assets/melees/ZWEIHANDER.png"
+  }
+]

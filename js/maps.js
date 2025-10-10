@@ -2,9 +2,17 @@
 const pageName = window.location.pathname.split("/").pop().toLowerCase();
 
 // Mapping entre page et fichier JSON
-const jsonFile = pageName.includes("bow-tier")
-  ? "js/bows.json"
-  : "js/maps.json"; // fallback par défaut
+let jsonFile;
+
+if (pageName.includes("bow-tier")) {
+  jsonFile = "js/bows.json";
+} else if (pageName.includes("index")) {
+  jsonFile = "js/maps.json";
+} else if (pageName.includes("melee-tier")) {
+  jsonFile = "js/melees.json";
+} else {
+  jsonFile = "js/maps.json"; // fallback par défaut
+}
 
 // Pour invoquer la div #maps dans la variable mapsContainer
 const mapsContainer = document.getElementById("maps");

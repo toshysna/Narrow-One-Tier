@@ -32,6 +32,13 @@ body.page-bows {
   background-attachment: fixed; /* L'image reste fixe quand on scroll */
 }
 
+body.page-melees {
+  background-image: url("../assets/bg/armurerie.jpg");
+  background-size: cover; /* Image prend toute la surface sans déformation */
+  background-position: center; /* Centre l'image */
+  background-attachment: fixed; /* L'image reste fixe quand on scroll */
+}
+
 .map-card {
   display: inline-block; /* la carte s'adapte aux dimensions de l'image */
   overflow: hidden;
@@ -43,7 +50,7 @@ body.page-bows {
 .map-card img {
   display: block; /* Elimine les espaces blancs sous l'image */
   width: 100%; /* L'image prend toute la largeur de la carte */
-  height: 120px; /* Hauteur fixe pour toute les images */
+  height: 110px; /* Hauteur fixe pour toute les images */
   object-fit: cover; /* L'image remplit son cadre sans deformation */
   max-width: 100%; /* Empêche l'image de dépasser la largeur de la carte */
 }
