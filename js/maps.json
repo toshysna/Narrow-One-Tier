@@ -1,27 +1,78 @@
 [
-  { "id": "alleys", "name": "ALLEYS", "image": "assets/maps/Alleys.png" },
-  { "id": "arch", "name": "ARCH", "image": "assets/maps/Arch.png" },
-  { "id": "arena", "name": "ARENA", "image": "assets/maps/Arena.png" },
   { "id": "castles", "name": "CASTLES", "image": "assets/maps/Castles.png" },
-  { "id": "desert", "name": "DESERT", "image": "assets/maps/Desert.png" },
-  { "id": "fields", "name": "FIELDS", "image": "assets/maps/Fields.png" },
+  {
+    "id": "castles_alt",
+    "name": "CASTLES_ALT",
+    "image": "assets/maps/Castles_Alt.png"
+  },
   { "id": "forts", "name": "FORTS", "image": "assets/maps/Forts.png" },
   {
-    "id": "gatehouse",
-    "name": "GATEHOUSE",
-    "image": "assets/maps/Gatehouse.png"
+    "id": "forts_alt",
+    "name": "FORTS_ALT",
+    "image": "assets/maps/Forts_Alt.png"
   },
+  { "id": "alleys", "name": "ALLEYS", "image": "assets/maps/Alleys.png" },
+  {
+    "id": "alleys_alt",
+    "name": "ALLEYS_ALT",
+    "image": "assets/maps/Alleys_Alt.png"
+  },
+  { "id": "fields", "name": "FIELDS", "image": "assets/maps/Fields.png" },
+  {
+    "id": "fields_alt",
+    "name": "FIELDS_ALT",
+    "image": "assets/maps/Fields_Alt.png"
+  },
+  { "id": "ruins", "name": "RUINS", "image": "assets/maps/Ruins.png" },
+  {
+    "id": "ruins_alt",
+    "name": "RUINS_ALT",
+    "image": "assets/maps/Ruins_Alt.png"
+  },
+  { "id": "arena", "name": "ARENA", "image": "assets/maps/Arena.png" },
+  {
+    "id": "arena_alt",
+    "name": "ARENA_ALT",
+    "image": "assets/maps/Arena_Alt.png"
+  },
+  { "id": "towers", "name": "TOWERS", "image": "assets/maps/Towers.png" },
+  {
+    "id": "towers_alt",
+    "name": "TOWERS_ALT",
+    "image": "assets/maps/Towers_Alt.png"
+  },
+  { "id": "arch", "name": "ARCH", "image": "assets/maps/Arch.png" },
+  { "id": "arch_alt", "name": "ARCH_ALT", "image": "assets/maps/Arch_Alt.png" },
+  { "id": "halls", "name": "HALLS", "image": "assets/maps/Halls.png" },
+  {
+    "id": "halls_alt",
+    "name": "HALLS_ALT",
+    "image": "assets/maps/Halls_Alt.png"
+  },
+  { "id": "tombs", "name": "TOMBS", "image": "assets/maps/Tombs.png" },
+  {
+    "id": "tombs_alt",
+    "name": "TOMBS_ALT",
+    "image": "assets/maps/Tombs_Alt.png"
+  },
+  { "id": "hills", "name": "HILLS", "image": "assets/maps/Hills.png" },
+  {
+    "id": "hills_alt",
+    "name": "HILLS_ALT",
+    "image": "assets/maps/Hills_Alt.png"
+  },
+  { "id": "jungle", "name": "JUNGLE", "image": "assets/maps/Jungle.png" },
+  { "id": "wall", "name": "WALL", "image": "assets/maps/Wall.png" },
+  { "id": "temple", "name": "TEMPLE", "image": "assets/maps/Temple.png" },
   {
     "id": "graveyard",
     "name": "GRAVEYARD",
     "image": "assets/maps/Graveyard.png"
   },
-  { "id": "halls", "name": "HALLS", "image": "assets/maps/Halls.png" },
-  { "id": "hills", "name": "HILLS", "image": "assets/maps/Hills.png" },
-  { "id": "jungle", "name": "JUNGLE", "image": "assets/maps/Jungle.png" },
-  { "id": "ruins", "name": "RUINS", "image": "assets/maps/Ruins.png" },
-  { "id": "temple", "name": "TEMPLE", "image": "assets/maps/Temple.png" },
-  { "id": "tombs", "name": "TOMBS", "image": "assets/maps/Tombs.png" },
-  { "id": "towers", "name": "TOWERS", "image": "assets/maps/Towers.png" },
-  { "id": "wall", "name": "WALL", "image": "assets/maps/Wall.png" }
+  { "id": "desert", "name": "DESERT", "image": "assets/maps/Desert.png" },
+  {
+    "id": "gatehouse",
+    "name": "GATEHOUSE",
+    "image": "assets/maps/Gatehouse.png"
+  }
 ]
