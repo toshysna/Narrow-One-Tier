@@ -65,3 +65,4 @@
 36. Enfin, j'écris la ligne const pageName = window.location.pathname.split("/").pop().toLowerCase(); pour détecter automatiquement la page de mon site et me permettre d'ensuite mettre une condition: si nom de la page = bow-tier alors appliquer le tableau bows.json sinon appliquer maps.json par defaut.
 37. Ajout 3ème Tier-list des melees.
 38. Ajouté les alt maps.
+39. Ajouté des textes a gauches des boutons des tier list et à droite du bouton download.

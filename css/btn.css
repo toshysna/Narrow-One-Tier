@@ -4,19 +4,22 @@
   align-items: flex-start;
   gap: 10px; /* espace entre tableau et bouton */
   margin: 0 auto;
-  width: 1500px;
+  width: 1650px;
 }
 
 #tier-list {
-  width: 1500px;
+  width: 1650px;
 }
 
 /* Bouton */
 #capture-btn {
-  all: unset;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
+  display: flex; /* Active Flexbox pour aligner les éléments */
+  align-items: center; /* Centre verticalement l'icône et le texte */
+  gap: 0px; /* Espace entre l'icône et le texte */
+  background: transparent; /* Fond transparent */
+  border: none; /* Pas de bordure */
+  cursor: pointer; /* Curseur "main" au survol */
+  padding: 8px 12px; /* Espace interne */
 }
 #capture-btn img {
   width: 90px;
