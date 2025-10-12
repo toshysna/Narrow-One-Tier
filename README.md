@@ -66,3 +66,4 @@
 37. Ajout 3ème Tier-list des melees.
 38. Ajouté les alt maps.
 39. Ajouté des textes a gauches des boutons des tier list et à droite du bouton download.
+40. Ajouté tier list arrows
