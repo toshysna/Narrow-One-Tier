@@ -1,0 +1,130 @@
+[
+  {
+    "id": "ancient_egypt",
+    "name": "ANCIENT EGYPT",
+    "image": "assets/arrows/ANCIENT EGYPT.jpg"
+  },
+  { "id": "baojian", "name": "BAOJIAN", "image": "assets/arrows/BAOJIAN.jpg" },
+  {
+    "id": "barbarian",
+    "name": "BARBARIAN",
+    "image": "assets/arrows/BARBARIAN.jpg"
+  },
+  {
+    "id": "branched_tip",
+    "name": "BRANCHED TIP",
+    "image": "assets/arrows/BRANCHED TIP.jpg"
+  },
+  {
+    "id": "candycane",
+    "name": "CANDYCANE",
+    "image": "assets/arrows/CANDYCANE.jpg"
+  },
+  {
+    "id": "crescent_spear",
+    "name": "CRESCENT SPEAR",
+    "image": "assets/arrows/CRESCENT SPEAR.jpg"
+  },
+  { "id": "default", "name": "DEFAULT", "image": "assets/arrows/DEFAULT.jpg" },
+  { "id": "demon", "name": "DEMON", "image": "assets/arrows/DEMON.jpg" },
+  {
+    "id": "fang_tian",
+    "name": "FANG TIAN",
+    "image": "assets/arrows/FANG TIAN.jpg"
+  },
+  { "id": "fork", "name": "FORK", "image": "assets/arrows/FORK.jpg" },
+  { "id": "golden", "name": "GOLDEN", "image": "assets/arrows/GOLDEN.jpg" },
+  { "id": "guard", "name": "GUARD", "image": "assets/arrows/GUARD.jpg" },
+  {
+    "id": "heavy_sharp_pointed",
+    "name": "HEAVY SHARP POINT",
+    "image": "assets/arrows/HEAVY SHARP POINT.jpg"
+  },
+  {
+    "id": "leaf_tip",
+    "name": "LEAF TIP",
+    "image": "assets/arrows/LEAF TIP.jpg"
+  },
+  {
+    "id": "light_sharp_hollow",
+    "name": "LIGHT SHARP HOLLOW",
+    "image": "assets/arrows/LIGHT SHARP HOLLOW.jpg"
+  },
+  {
+    "id": "light_sharp_point",
+    "name": "LIGHT SHARP POINT",
+    "image": "assets/arrows/LIGHT SHARP POINT.jpg"
+  },
+  {
+    "id": "moon_shaped_gold",
+    "name": "MOON SHAPED GOLD",
+    "image": "assets/arrows/MOON SHAPED GOLD.jpg"
+  },
+  {
+    "id": "moon_shaped",
+    "name": "MOON SHAPED",
+    "image": "assets/arrows/MOON SHAPED.jpg"
+  },
+  {
+    "id": "morning_star",
+    "name": "MORNING STAR",
+    "image": "assets/arrows/MORNING STAR.jpg"
+  },
+  {
+    "id": "pelican_warrior",
+    "name": "PELICAN WARRIOR",
+    "image": "assets/arrows/PELICAN WARRIOR.jpg"
+  },
+  {
+    "id": "sharpened_branch",
+    "name": "SHARPENED BRANCH",
+    "image": "assets/arrows/SHARPENED BRANCH.jpg"
+  },
+  {
+    "id": "skull_tribe",
+    "name": "SKULL TRIBE",
+    "image": "assets/arrows/SKULL TRIBE.jpg"
+  },
+  {
+    "id": "spike_feather",
+    "name": "SPIKE FEATHER",
+    "image": "assets/arrows/SPIKE FEATHER.jpg"
+  },
+  {
+    "id": "stone_tip",
+    "name": "STONE TIP",
+    "image": "assets/arrows/STONE TIP.jpg"
+  },
+  {
+    "id": "thin_bone",
+    "name": "THIN BONE",
+    "image": "assets/arrows/THIN BONE.jpg"
+  },
+  {
+    "id": "thin_tip_colored",
+    "name": "THIN TIP COLORED",
+    "image": "assets/arrows/THIN TIP COLORED.jpg"
+  },
+  {
+    "id": "trident_gold",
+    "name": "TRIDENT GOLD",
+    "image": "assets/arrows/TRIDENT GOLD.jpg"
+  },
+  { "id": "trident", "name": "TRIDENT", "image": "assets/arrows/TRIDENT.jpg" },
+  {
+    "id": "v_tip_sharp_colored",
+    "name": "V TIP SHARP COLORED",
+    "image": "assets/arrows/V TIP SHARP COLORED.jpg"
+  },
+  {
+    "id": "v_tip_sharp",
+    "name": "V TIP SHARP",
+    "image": "assets/arrows/V TIP SHARP.jpg"
+  },
+  { "id": "viking", "name": "VIKING", "image": "assets/arrows/VIKING.jpg" },
+  {
+    "id": "x_tip_sharp",
+    "name": "X TIP SHARP",
+    "image": "assets/arrows/X TIP SHARP.jpg"
+  }
+]

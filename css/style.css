@@ -39,6 +39,13 @@ body.page-melees {
   background-attachment: fixed;
 }
 
+body.page-arrows {
+  background-image: url("../assets/bg/arrows.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
 .map-card {
   display: inline-block; /* la carte s'adapte aux dimensions de l'image */
   overflow: hidden;
@@ -96,7 +103,7 @@ body.page-melees {
   -webkit-text-stroke: 1px black;
   text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.9);
   text-align: right;
-  min-width: 70px;
+  min-width: 90px;
 }
 
 .nav-button {

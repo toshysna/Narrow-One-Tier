@@ -10,6 +10,8 @@ if (pageName.includes("bow-tier")) {
   jsonFile = "js/maps.json";
 } else if (pageName.includes("melee-tier")) {
   jsonFile = "js/melees.json";
+} else if (pageName.includes("arrow-tier")) {
+  jsonFile = "js/arrows.json";
 } else {
   jsonFile = "js/maps.json"; // fallback par défaut
 }
