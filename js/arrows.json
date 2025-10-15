@@ -126,5 +126,18 @@
     "id": "x_tip_sharp",
     "name": "X TIP SHARP",
     "image": "assets/arrows/X TIP SHARP.jpg"
+  },
+  { "id": "xmas", "name": "XMAS", "image": "assets/arrows/XMas.jpg" },
+  { "id": "carrot", "name": "CARROT", "image": "assets/arrows/Carrot.jpg" },
+  { "id": "vheart", "name": "VHEART", "image": "assets/arrows/VHeart.jpg" },
+  {
+    "id": "v_sharp_heart",
+    "name": "V SHARP HEART",
+    "image": "assets/arrows/VSharpHeart.jpg"
+  },
+  {
+    "id": "split_heart",
+    "name": "SPLIT HEART",
+    "image": "assets/arrows/SplitHeart.jpg"
   }
 ]
