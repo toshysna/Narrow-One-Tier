@@ -74,5 +74,10 @@
     "id": "gatehouse",
     "name": "GATEHOUSE",
     "image": "assets/maps/Gatehouse.png"
+  },
+  {
+    "id": "tribe",
+    "name": "TRIBE",
+    "image": "assets/maps/Tribe.png"
   }
 ]
