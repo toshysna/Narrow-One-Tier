@@ -388,5 +388,10 @@
     "id": "zweihander",
     "name": "ZWEIHANDER",
     "image": "assets/melees/ZWEIHANDER.png"
+  },
+  {
+    "id": "xmas_present_hammer",
+    "name": "XMAS PRESENT HAMMER",
+    "image": "assets/melees/XMAS PRESENT HAMMER.png"
   }
 ]
