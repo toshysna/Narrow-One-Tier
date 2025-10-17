@@ -18,7 +18,7 @@
   {
     "id": "candycane",
     "name": "CANDYCANE",
-    "image": "assets/arrows/CANDYCANE.jpg"
+    "image": "assets/arrows/CANDY CANE.jpg"
   },
   {
     "id": "crescent_spear",
@@ -114,7 +114,7 @@
   {
     "id": "v_tip_sharp_colored",
     "name": "V TIP SHARP COLORED",
-    "image": "assets/arrows/V TIP SHARP COLORED.jpg"
+    "image": "assets/arrows/COLORED V TIP SHARP.jpg"
   },
   {
     "id": "v_tip_sharp",
@@ -127,17 +127,17 @@
     "name": "X TIP SHARP",
     "image": "assets/arrows/X TIP SHARP.jpg"
   },
-  { "id": "xmas", "name": "XMAS", "image": "assets/arrows/XMas.jpg" },
-  { "id": "carrot", "name": "CARROT", "image": "assets/arrows/Carrot.jpg" },
-  { "id": "vheart", "name": "VHEART", "image": "assets/arrows/VHeart.jpg" },
+  { "id": "xmas", "name": "XMAS", "image": "assets/arrows/XMAS.jpg" },
+  { "id": "carrot", "name": "CARROT", "image": "assets/arrows/CARROT.jpg" },
+  { "id": "vheart", "name": "VHEART", "image": "assets/arrows/V HEART.jpg" },
   {
     "id": "v_sharp_heart",
     "name": "V SHARP HEART",
-    "image": "assets/arrows/VSharpHeart.jpg"
+    "image": "assets/arrows/V SHARP HEART.jpg"
   },
   {
     "id": "split_heart",
     "name": "SPLIT HEART",
-    "image": "assets/arrows/SplitHeart.jpg"
+    "image": "assets/arrows/SPLIT HEART.jpg"
   }
 ]
