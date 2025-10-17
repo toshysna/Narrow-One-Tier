@@ -127,9 +127,9 @@
     "name": "X TIP SHARP",
     "image": "assets/arrows/X TIP SHARP.jpg"
   },
-  { "id": "xmas", "name": "XMAS", "image": "assets/arrows/XMAS.jpg" },
-  { "id": "carrot", "name": "CARROT", "image": "assets/arrows/CARROT - Copie" },
   { "id": "vheart", "name": "VHEART", "image": "assets/arrows/V HEART.jpg" },
+  { "id": "carrott", "name": "CARROTT", "image": "assets/arrows/CARROTT.jpg" },
+  { "id": "xmass", "name": "XMASS", "image": "assets/arrows/XMASS.jpg" },
   {
     "id": "v_sharp_heart",
     "name": "V SHARP HEART",
