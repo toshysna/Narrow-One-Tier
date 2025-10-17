@@ -1,0 +1,233 @@
+[
+  {
+    "id": "ancient_egypt_detailed",
+    "name": "ANCIENT EGYPT DETAILED",
+    "image": "assets/skins/ANCIENT EGYPT DETAILED.jpg"
+  },
+  {
+    "id": "ancient_egypt",
+    "name": "ANCIENT EGYPT",
+    "image": "assets/skins/ANCIENT EGYPT.jpg"
+  },
+  {
+    "id": "arabian_knight",
+    "name": "ARABIAN KNIGHT",
+    "image": "assets/skins/ARABIAN KNIGHT.jpg"
+  },
+  {
+    "id": "aztec_ollamalitzli",
+    "name": "AZTEC OLLAMALITZLI",
+    "image": "assets/skins/AZTEC OLLAMALITZLI.jpg"
+  },
+  {
+    "id": "aztec_executioner",
+    "name": "AZTEC EXECUTIONER",
+    "image": "assets/skins/AZTEC EXECUTIONER.jpg"
+  },
+  {
+    "id": "aztec_warrior",
+    "name": "AZTEC WARRIOR",
+    "image": "assets/skins/AZTEC WARRIOR.jpg"
+  },
+  {
+    "id": "basic_armor",
+    "name": "BASIC ARMOR",
+    "image": "assets/skins/BASIC ARMOR.jpg"
+  },
+  {
+    "id": "bloodlust_barbarian",
+    "name": "BLOODLUST BARBARIAN",
+    "image": "assets/skins/BLOODLUST BARBARIAN.jpg"
+  },
+  {
+    "id": "chainmail_armor",
+    "name": "CHAINMAIL ARMOR",
+    "image": "assets/skins/CHAINMAIL ARMOR.jpg"
+  },
+  {
+    "id": "commoner_colorful",
+    "name": "COMMONER COLORFUL",
+    "image": "assets/skins/COMMONER COLORFUL.jpg"
+  },
+  {
+    "id": "commoner",
+    "name": "COMMONER",
+    "image": "assets/skins/COMMONER.jpg"
+  },
+  {
+    "id": "cupido_valentinesday",
+    "name": "CUPIDO VALENTINESDAY",
+    "image": "assets/skins/CUPIDO VALENTINESDAY.jpg"
+  },
+  {
+    "id": "desert_merchant_assistant",
+    "name": "DESERT MERCHANT ASSISTANT",
+    "image": "assets/skins/DESERT MERCHANT ASSISTANT.jpg"
+  },
+  {
+    "id": "desert_merchant",
+    "name": "DESERT MERCHANT",
+    "image": "assets/skins/DESERT MERCHANT.jpg"
+  },
+  {
+    "id": "flower_dress",
+    "name": "FLOWER DRESS",
+    "image": "assets/skins/FLOWER DRESS.jpg"
+  },
+  {
+    "id": "flower_shirt",
+    "name": "FLOWER SHIRT",
+    "image": "assets/skins/FLOWER SHIRT.jpg"
+  },
+  {
+    "id": "gate_guard_detailed",
+    "name": "GATE GUARD DETAILED",
+    "image": "assets/skins/GATE GUARD DETAILED.jpg"
+  },
+  {
+    "id": "gate_guard",
+    "name": "GATE GUARD",
+    "image": "assets/skins/GATE GUARD.jpg"
+  },
+  {
+    "id": "gladiator_armor",
+    "name": "GLADIATOR ARMOR",
+    "image": "assets/skins/GLADIATOR ARMOR.jpg"
+  },
+  {
+    "id": "greek_owl_warrior",
+    "name": "GREEK OWL WARRIOR",
+    "image": "assets/skins/GREEK OWL WARRIOR.jpg"
+  },
+  {
+    "id": "greek_winged",
+    "name": "GREEK WINGED",
+    "image": "assets/skins/GREEK WINGED.jpg"
+  },
+  {
+    "id": "greek_zeus",
+    "name": "GREEK ZEUS",
+    "image": "assets/skins/GREEK ZEUS.jpg"
+  },
+  {
+    "id": "han_dynasty_warrior",
+    "name": "HAN DYNASTY WARRIOR",
+    "image": "assets/skins/HAN DYNASTY WARRIOR.jpg"
+  },
+  {
+    "id": "heavy_armor",
+    "name": "HEAVY ARMOR",
+    "image": "assets/skins/HEAVY ARMOR.jpg"
+  },
+  { "id": "hunter", "name": "HUNTER", "image": "assets/skins/HUNTER.jpg" },
+  { "id": "jester", "name": "JESTER", "image": "assets/skins/JESTER.jpg" },
+  {
+    "id": "king_armor",
+    "name": "KING ARMOR",
+    "image": "assets/skins/KING ARMOR.jpg"
+  },
+  {
+    "id": "lost_crown",
+    "name": "LOST CROWN",
+    "image": "assets/skins/LOST CROWN.jpg"
+  },
+  { "id": "monk", "name": "MONK", "image": "assets/skins/MONK.jpg" },
+  {
+    "id": "n1_birthday",
+    "name": "N1 BIRTHDAY",
+    "image": "assets/skins/N1 BIRTHDAY.jpg"
+  },
+  { "id": "ninja", "name": "NINJA", "image": "assets/skins/NINJA.jpg" },
+  {
+    "id": "ottoman_janissary",
+    "name": "OTTOMAN JANISSARY",
+    "image": "assets/skins/OTTOMAN JANISSARY.jpg"
+  },
+  { "id": "peasant", "name": "PEASANT", "image": "assets/skins/PEASANT.jpg" },
+  {
+    "id": "pelican_warrior",
+    "name": "PELICAN WARRIOR",
+    "image": "assets/skins/PELICAN WARRIOR.jpg"
+  },
+  {
+    "id": "pharaoh_armor",
+    "name": "PHARAOH ARMOR",
+    "image": "assets/skins/PHARAOH ARMOR.jpg"
+  },
+  {
+    "id": "plague_doctor",
+    "name": "PLAGUE DOCTOR",
+    "image": "assets/skins/PLAGUE DOCTOR.jpg"
+  },
+  {
+    "id": "quing_dynasty_training",
+    "name": "QING DYNASTY TRAINING",
+    "image": "assets/skins/QING DYNASTY TRAINING.jpg"
+  },
+  {
+    "id": "qing_dynasty_warrior",
+    "name": "QING DYNASTY WARRIOR",
+    "image": "assets/skins/QING DYNASTY WARRIOR.jpg"
+  },
+  {
+    "id": "roman_armor",
+    "name": "ROMAN ARMOR",
+    "image": "assets/skins/ROMAN ARMOR.jpg"
+  },
+  {
+    "id": "samurai_armor",
+    "name": "SAMURAI ARMOR",
+    "image": "assets/skins/SAMURAI ARMOR.jpg"
+  },
+  { "id": "santa", "name": "SANTA", "image": "assets/skins/SANTA.jpg" },
+  {
+    "id": "saracen_warrior",
+    "name": "SARACEN WARRIOR",
+    "image": "assets/skins/SARACEN WARRIOR.jpg"
+  },
+  {
+    "id": "skull_tribe_deer_warrior",
+    "name": "SKULL TRIBE DEER WARRIOR",
+    "image": "assets/skins/SKULL TRIBE DEER WARRIOR.jpg"
+  },
+  {
+    "id": "skull_tribe_warrior",
+    "name": "SKULL TRIBE WARRIOR",
+    "image": "assets/skins/SKULL TRIBE WARRIOR.jpg"
+  },
+  {
+    "id": "spartan_armor",
+    "name": "SPARTAN ARMOR",
+    "image": "assets/skins/SPARTAN ARMOR.jpg"
+  },
+  {
+    "id": "striped_armor",
+    "name": "STRIPED ARMOR",
+    "image": "assets/skins/STRIPED ARMOR.jpg"
+  },
+  {
+    "id": "tang_dynasty_warrior",
+    "name": "TANG DYNASTY WARRIOR",
+    "image": "assets/skins/TANG DYNASTY WARRIOR.jpg"
+  },
+  {
+    "id": "templar_knight",
+    "name": "TEMPLAR KNIGHT",
+    "image": "assets/skins/TEMPLAR KNIGHT.jpg"
+  },
+  {
+    "id": "viking_armor_detailed",
+    "name": "VIKING ARMOR DETAILED",
+    "image": "assets/skins/VIKING ARMOR DETAILED.jpg"
+  },
+  {
+    "id": "viking_armor_wolf",
+    "name": "VIKING ARMOR WOLF",
+    "image": "assets/skins/VIKING ARMOR WOLF.jpg"
+  },
+  {
+    "id": "viking_armor",
+    "name": "VIKING ARMOR",
+    "image": "assets/skins/VIKING ARMOR.jpg"
+  }
+]

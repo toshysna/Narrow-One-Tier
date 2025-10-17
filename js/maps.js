@@ -12,6 +12,8 @@ if (pageName.includes("bow-tier")) {
   jsonFile = "js/melees.json";
 } else if (pageName.includes("arrow-tier")) {
   jsonFile = "js/arrows.json";
+} else if (pageName.includes("skin-tier")) {
+  jsonFile = "js/skins.json";
 } else {
   jsonFile = "js/maps.json"; // fallback par défaut
 }

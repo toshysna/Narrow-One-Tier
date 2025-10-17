@@ -46,6 +46,13 @@ body.page-arrows {
   background-attachment: fixed;
 }
 
+body.page-skins {
+  background-image: url("../assets/bg/Skins bg.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
 .map-card {
   display: inline-block; /* la carte s'adapte aux dimensions de l'image */
   overflow: hidden;
