@@ -46,6 +46,8 @@
   gap: 3px;
   flex-grow: 1;
   min-height: 110px;
+  position: relative;
+  z-index: 1;
 }
 
 .tier-S h2 {

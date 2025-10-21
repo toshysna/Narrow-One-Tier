@@ -1,16 +1,34 @@
 #tier-list-container {
   display: flex;
-  justify-content: flex-start; /* centre le groupe tableau+bouton */
+  flex-wrap: row;
+  justify-content: center; /* centre le groupe tableau+bouton */
   align-items: flex-start;
   gap: 10px; /* espace entre tableau et bouton */
   margin: 0 auto;
-  width: 1650px;
+  width: 100%;
+  max-width: 1400px;
+  min-width: 800px;
 }
 
 #tier-list {
-  width: 1650px;
+  width: 100%;
+  max-width: 1200px; /* Largeur max pour les grands écrans */
+  margin: 0 auto;
+  flex-shrink: 0;
 }
 
+@media (max-width: 768px) and (orientation: portrait) {
+  #tier-list-container {
+    flex-direction: column; /* Boutons au-dessus du tableau */
+    align-items: center;
+  }
+  #left-buttons {
+    flex-direction: row; /* Boutons en ligne */
+    flex-wrap: wrap; /* Retour à la ligne si nécessaire */
+    justify-content: center;
+    margin-bottom: 20px; /* Espace entre les boutons et le tableau */
+  }
+}
 /* Bouton */
 #capture-btn {
   display: flex; /* Active Flexbox pour aligner les éléments */
@@ -30,13 +48,6 @@
   filter: brightness(0.8);
 }
 
-#left-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-}
 .nav-button {
   display: inline-flex;
   align-items: center;
