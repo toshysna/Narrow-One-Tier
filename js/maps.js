@@ -31,29 +31,46 @@ function isMobileDevice() {
 }
 
 // Fonction pour le drag-and-drop souris (ordinateur)
+const isFirefox = navigator.userAgent.toLowerCase().includes("firefox");
+
 function setupMouseDragAndDrop(mapCard, img) {
   mapCard.setAttribute("draggable", "true");
 
   mapCard.addEventListener("dragstart", (e) => {
     e.dataTransfer.setData("text/plain", mapCard.id);
 
-    // Création d'un clone propre
+    const isFirefox = navigator.userAgent.toLowerCase().includes("firefox");
+
+    if (isFirefox) {
+      // Firefox → on NE met PAS de setDragImage
+      // On laisse Firefox gérer son ghost
+      mapCard.classList.add("dragging");
+      return;
+    }
+
+    // Chrome / Edge / Opera → ghost custom
+    const rect = img.getBoundingClientRect();
+    const displayedWidth = rect.width;
+    const displayedHeight = rect.height;
+
     const ghost = img.cloneNode(true);
     ghost.style.position = "fixed";
     ghost.style.top = e.clientY + "px";
     ghost.style.left = e.clientX + "px";
-    ghost.style.width = img.getBoundingClientRect().width + "px";
-    ghost.style.height = img.getBoundingClientRect().height + "px";
+    ghost.style.width = displayedWidth + "px";
+    ghost.style.height = displayedHeight + "px";
     ghost.style.pointerEvents = "none";
     ghost.style.opacity = "0.9";
     ghost.style.zIndex = "9999";
 
     document.body.appendChild(ghost);
 
-    // Positionner l'image fantôme exactement sous la souris
-    e.dataTransfer.setDragImage(ghost, ghost.width / 2, ghost.height / 2);
+    e.dataTransfer.setDragImage(
+      ghost,
+      displayedWidth / 2,
+      displayedHeight / 2
+    );
 
-    // Supprimer juste après (Chrome a déjà pris le snapshot)
     setTimeout(() => ghost.remove(), 0);
 
     mapCard.classList.add("dragging");
@@ -63,6 +80,8 @@ function setupMouseDragAndDrop(mapCard, img) {
     mapCard.classList.remove("dragging");
   });
 }
+
+
 
 // ---------------------------------------------
 function setupTouchDragAndDrop(mapCard) {
