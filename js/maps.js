@@ -33,43 +33,29 @@ function isMobileDevice() {
 // Fonction pour le drag-and-drop souris (ordinateur)
 function setupMouseDragAndDrop(mapCard, img) {
   mapCard.setAttribute("draggable", "true");
+
   mapCard.addEventListener("dragstart", (e) => {
     e.dataTransfer.setData("text/plain", mapCard.id);
-    const rect = img.getBoundingClientRect();
-    const displayedWidth = rect.width;
-    const displayedHeight = rect.height;
-    const canvas = document.createElement("canvas");
-    canvas.width = displayedWidth;
-    canvas.height = displayedHeight;
-    const ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0, displayedWidth, displayedHeight);
-    const dragImage = new Image();
-    dragImage.src = canvas.toDataURL();
-    dragImage.style.position = "absolute";
-    dragImage.style.top = "-9999px";
-    dragImage.style.pointerEvents = "none";
-    document.body.appendChild(dragImage);
-    if (dragImage.complete) {
-      e.dataTransfer.setDragImage(
-        dragImage,
-        displayedWidth / 2,
-        displayedHeight / 2
-      );
-      setTimeout(() => {
-        document.body.removeChild(dragImage);
-      }, 0);
-    } else {
-      dragImage.onload = () => {
-        e.dataTransfer.setDragImage(
-          dragImage,
-          displayedWidth / 2,
-          displayedHeight / 2
-        );
-        setTimeout(() => {
-          document.body.removeChild(dragImage);
-        }, 0);
-      };
-    }
+
+    // Création d'un clone propre
+    const ghost = img.cloneNode(true);
+    ghost.style.position = "fixed";
+    ghost.style.top = e.clientY + "px";
+    ghost.style.left = e.clientX + "px";
+    ghost.style.width = img.getBoundingClientRect().width + "px";
+    ghost.style.height = img.getBoundingClientRect().height + "px";
+    ghost.style.pointerEvents = "none";
+    ghost.style.opacity = "0.9";
+    ghost.style.zIndex = "9999";
+
+    document.body.appendChild(ghost);
+
+    // Positionner l'image fantôme exactement sous la souris
+    e.dataTransfer.setDragImage(ghost, ghost.width / 2, ghost.height / 2);
+
+    // Supprimer juste après (Chrome a déjà pris le snapshot)
+    setTimeout(() => ghost.remove(), 0);
+
     mapCard.classList.add("dragging");
   });
 
@@ -77,70 +63,76 @@ function setupMouseDragAndDrop(mapCard, img) {
     mapCard.classList.remove("dragging");
   });
 }
+
 // ---------------------------------------------
 function setupTouchDragAndDrop(mapCard) {
   let isDragging = false;
-  let offsetX, offsetY;
+  let offsetX = 0;
+  let offsetY = 0;
   let startParent = null;
+  let ghost = null;
 
-  mapCard.addEventListener(
-    "touchstart",
-    (e) => {
-      e.preventDefault();
-      isDragging = true;
-      const touch = e.touches[0];
-      offsetX = touch.clientX - mapCard.getBoundingClientRect().left;
-      offsetY = touch.clientY - mapCard.getBoundingClientRect().top;
-      mapCard.style.position = "absolute";
-      mapCard.style.zIndex = "1000";
-      mapCard.style.width = mapCard.offsetWidth + "px";
-      mapCard.style.height = mapCard.offsetHeight + "px";
-      startParent = mapCard.parentElement; // Stocke le parent initial
-      document.body.appendChild(mapCard);
-    },
-    { passive: false }
-  );
+  mapCard.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    isDragging = true;
 
-  document.addEventListener(
-    "touchmove",
-    (e) => {
-      if (!isDragging) return;
-      e.preventDefault();
-      const touch = e.touches[0];
-      mapCard.style.left = touch.clientX - offsetX + "px";
-      mapCard.style.top = touch.clientY - offsetY + "px";
-    },
-    { passive: false }
-  );
+    const touch = e.touches[0];
+    const rect = mapCard.getBoundingClientRect();
+
+    offsetX = touch.clientX - rect.left;
+    offsetY = touch.clientY - rect.top;
+
+    startParent = mapCard.parentElement;
+
+    // Création du ghost qui suit le doigt
+    ghost = mapCard.cloneNode(true);
+    ghost.style.position = "fixed";
+    ghost.style.top = rect.top + "px";
+    ghost.style.left = rect.left + "px";
+    ghost.style.width = rect.width + "px";
+    ghost.style.height = rect.height + "px";
+    ghost.style.pointerEvents = "none";
+    ghost.style.opacity = "0.8";
+    ghost.style.zIndex = "9999";
+
+    document.body.appendChild(ghost);
+
+    // On retire la vraie carte du DOM pour éviter les conflits
+    mapCard.style.opacity = "0";
+  }, { passive: false });
+
+  document.addEventListener("touchmove", (e) => {
+    if (!isDragging || !ghost) return;
+    e.preventDefault();
+
+    const touch = e.touches[0];
+
+    ghost.style.left = (touch.clientX - offsetX) + "px";
+    ghost.style.top = (touch.clientY - offsetY) + "px";
+  }, { passive: false });
 
   document.addEventListener("touchend", (e) => {
     if (!isDragging) return;
     isDragging = false;
 
-    // Trouver la zone de drop sous le doigt
     const touch = e.changedTouches[0];
     const dropElement = document.elementFromPoint(touch.clientX, touch.clientY);
 
-    // Remonter dans le DOM pour trouver un parent .tier-cards
-    let dropZone = dropElement.closest(".tier-cards");
+    let dropZone = dropElement ? dropElement.closest(".tier-cards") : null;
 
-    // Si une zone valide est trouvée, déplacer la carte
+    // Si on drop dans une zone valide
     if (dropZone) {
       dropZone.appendChild(mapCard);
     } else {
-      // Sinon, retourner la carte à son parent initial
-      if (startParent) {
-        startParent.appendChild(mapCard);
-      }
+      // Sinon retour à la position d'origine
+      startParent.appendChild(mapCard);
     }
 
-    // Réinitialiser le style
-    mapCard.style.position = "";
-    mapCard.style.zIndex = "";
-    mapCard.style.left = "";
-    mapCard.style.top = "";
-    mapCard.style.width = "";
-    mapCard.style.height = "";
+    // Nettoyage
+    if (ghost) ghost.remove();
+    ghost = null;
+
+    mapCard.style.opacity = "1";
   });
 }
 
