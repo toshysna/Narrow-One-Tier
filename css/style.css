@@ -261,7 +261,7 @@ font-family: "BlueNight-Regular";
    RESPONSIVE — TABLETTE
 =========================== */
 
-@media (max-width: 1248px) {
+@media (max-width: 1430px) {
 
   /* Le conteneur principal passe en colonne */
   #tier-list-container {
@@ -333,6 +333,28 @@ font-family: "BlueNight-Regular";
   }
 }
 
+/* ===========================
+   RESPONSIVE — MI TABLETTE MI ORDI
+=========================== */
+
+@media (min-width: 1430px) and (max-width: 1700px) {
+
+  /* Cache les textes des boutons */
+  .text-left-button,
+  .text-right-button {
+    display: none;
+  }
+
+  /* Centre mieux les icônes quand le texte disparaît */
+  .button-group {
+    justify-content: center;
+  }
+
+  /* Optionnel : réduire un peu l’espace vide */
+  #left-buttons {
+    gap: 15px;
+  }
+}
 
 /* ===========================
    RESPONSIVE — MOBILE
