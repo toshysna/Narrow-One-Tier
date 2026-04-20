@@ -68,3 +68,22 @@
 39. Ajouté des textes a gauches des boutons des tier list et à droite du bouton download.
 40. Ajouté tier list arrows
 41. Ajouté la tier list skins + modifié fond cartes arrows
+42. J’ai restructuré tout mon site pour obtenir des URLs propres sans .html.J’ai créé un dossier /pages à la racine, et dedans j’ai mis :
+/pages/map-tierlist/, /pages/bow-tierlist/, /pages/melee-tierlist/, /pages/arrow-tierlist/, /pages/skin-tierlist/, chacun contenant un index.html.
+43. J’ai mis à jour mon index.html principal pour qu’il redirige automatiquement vers la page d’accueil propre :
+/*<meta http-equiv="refresh" content="0; url=/pages/map-tierlist/" />*/
+44. J’ai corrigé tous les chemins dans mes pages HTML pour qu’ils fonctionnent depuis un sous-dossier : CSS → /css/style.css JS → /js/nav.js, /js/tierlist.js, /js/cards.js
+Images → /assets/... Tous les chemins sont maintenant absolus, ce qui évite les erreurs 404.
+45. J’ai réécrit entièrement mon nav.js pour qu’il génère automatiquement la navigation avec les bons liens : /pages/map-tierlist/, /pages/bow-tierlist/, etc.
+Plus besoin de répéter le menu dans chaque page.
+46. J’ai corrigé mon cards.js pour qu’il fonctionne depuis n’importe quel dossier :
+    -Les JSON sont maintenant chargés via des chemins absolus (/js/maps.json, etc.)
+    -Les images sont automatiquement corrigées pour pointer vers /assets/...
+    -Le drag & drop mobile + desktop continue de fonctionner parfaitement.
+47. J’ai vérifié que mes tier lists (maps, bows, melees, arrows, skins) se chargent correctement depuis leurs nouveaux dossiers /pages/.../index.html.
+48. J’ai validé que les cartes s’affichent à nouveau correctement après la restructuration, grâce aux corrections dans cards.js et aux chemins absolus.
+49. J’ai maintenant une architecture propre, scalable et professionnelle, avec :
+    -des URLs propres
+    -une navigation centralisée
+    -des scripts et assets accessibles depuis n’importe où
+    -un code beaucoup plus facile à maintenir et à faire évoluer.

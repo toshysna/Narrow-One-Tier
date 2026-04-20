@@ -1,92 +1,124 @@
-const tiers = ["S", "A", "B", "C", "EW"]; //tableau par default
-const tierListContainer = document.getElementById("tier-list"); // grab la div html avec comme id "tier-list" et le stock dans la variable tierListContainer
+// ------------------------------------------------------------
+// 1) Configuration des tiers
+// ------------------------------------------------------------
+const TIERS = ["S", "A", "B", "C", "EW"];
 
-tiers.forEach((tierName) => {
-  const tierRow = document.createElement("div"); //ajoute une div pour la rangée
-  tierRow.classList.add("tier-row", `tier-${tierName}`); // ajoute une class "tier-row" à la div. Ajoute aussi une classe "tier-S", "tier-A", etc.
+// ------------------------------------------------------------
+// 2) Création de la structure du tableau
+// ------------------------------------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("tier-list");
+  if (!container) return;
 
-  const tierTitle = document.createElement("h2"); // ajoute balise h2 au row
-  tierTitle.textContent = tierName; // definit le texte par defaut (S,A etc)
-  tierTitle.contentEditable = true; // permet de renommer
-  // Empêche qu'on y dépose des éléments (cartes par ex.)
-  tierTitle.addEventListener("dragover", (e) => e.preventDefault());
-  tierTitle.addEventListener("drop", (e) => e.preventDefault());
-
-  const tierCards = document.createElement("div"); //create div vide qui va acceuillir toute les cartes
-  tierCards.classList.add("tier-cards");
-
-  tierCards.addEventListener("dragover", (e) => {
-    e.preventDefault();
-
-    const draggedId = e.dataTransfer.getData("text/plain");
-    const draggedCard = document.getElementById(draggedId);
-    if (!draggedCard) return;
-
-    const afterElement = getDragAfterElement(tierCards, e.clientX);
-
-    if (!afterElement) {
-      tierCards.appendChild(draggedCard); // à la fin
-    } else {
-      tierCards.insertBefore(draggedCard, afterElement); // entre deux cartes
-    }
+  TIERS.forEach(tierName => {
+    const row = createTierRow(tierName);
+    container.appendChild(row);
   });
 
-  tierCards.addEventListener("drop", (e) => {
-    e.preventDefault();
-    const draggedId = e.dataTransfer.getData("text/plain");
-    const draggedCard = document.getElementById(draggedId);
-    if (!draggedCard) return;
-
-    const afterElement = getDragAfterElement(tierCards, e.clientX);
-
-    if (!afterElement) {
-      tierCards.appendChild(draggedCard);
-    } else {
-      tierCards.insertBefore(draggedCard, afterElement);
-    }
-  });
-
-  function getDragAfterElement(container, x) {
-    const cards = [...container.querySelectorAll(".map-card:not(.dragging)")];
-
-    return cards.reduce(
-      (closest, child) => {
-        const box = child.getBoundingClientRect();
-        const offset = x - (box.left + box.width / 2);
-
-        if (offset < 0 && offset > closest.offset) {
-          return { offset, element: child };
-        } else {
-          return closest;
-        }
-      },
-      { offset: Number.NEGATIVE_INFINITY }
-    ).element;
-  }
-
-  tierRow.appendChild(tierTitle); //Row parent de Title
-  tierRow.appendChild(tierCards); //Row parent de Cards
-  tierListContainer.appendChild(tierRow); //ListContainer parent de Row
+  setupTierDropZones();
+  setupScreenshotButton();
 });
 
-document.getElementById("capture-btn").addEventListener("click", () => {
-  const element = document.getElementById("tier-list");
+// ------------------------------------------------------------
+// 3) Création d'une rangée (S, A, B, C, EW)
+// ------------------------------------------------------------
+function createTierRow(name) {
+  const row = document.createElement("div");
+  row.classList.add("tier-row", `tier-${name}`);
 
-  html2canvas(element, {
-    allowTaint: true,
-    useCORS: true,
-    backgroundColor: null, // garde la transparence si nécessaire
-  }).then((canvas) => {
-    // Convertit le canvas en image PNG
-    const imgData = canvas.toDataURL("image/png");
+  const title = document.createElement("h2");
+  title.textContent = name;
+  title.contentEditable = true;
 
-    // Crée un lien de téléchargement
-    const link = document.createElement("a");
-    link.href = imgData;
-    link.download = "tierlist results.png";
-    link.click();
+  // Empêche qu'on drop sur le titre
+  title.addEventListener("dragover", e => e.preventDefault());
+  title.addEventListener("drop", e => e.preventDefault());
+
+  const cards = document.createElement("div");
+  cards.classList.add("tier-cards");
+
+  row.appendChild(title);
+  row.appendChild(cards);
+
+  return row;
+}
+
+// ------------------------------------------------------------
+// 4) Gestion du drag & drop dans les zones de tier
+// ------------------------------------------------------------
+function setupTierDropZones() {
+  const zones = document.querySelectorAll(".tier-cards");
+
+  zones.forEach(zone => {
+    zone.addEventListener("dragover", e => {
+      e.preventDefault();
+      const draggedId = e.dataTransfer.getData("text/plain");
+      const draggedCard = document.getElementById(draggedId);
+      if (!draggedCard) return;
+
+      const afterElement = getDragAfterElement(zone, e.clientX);
+
+      if (!afterElement) {
+        zone.appendChild(draggedCard);
+      } else {
+        zone.insertBefore(draggedCard, afterElement);
+      }
+    });
+
+    zone.addEventListener("drop", e => {
+      e.preventDefault();
+      const draggedId = e.dataTransfer.getData("text/plain");
+      const draggedCard = document.getElementById(draggedId);
+      if (!draggedCard) return;
+
+      const afterElement = getDragAfterElement(zone, e.clientX);
+
+      if (!afterElement) {
+        zone.appendChild(draggedCard);
+      } else {
+        zone.insertBefore(draggedCard, afterElement);
+      }
+    });
   });
-});
-/*   if (draggedCard) {
-      e.currentTarget.appendChild(draggedCard); // déplace la carte
-    } */
+}
+
+// Trouve la carte la plus proche pour insérer avant/après
+function getDragAfterElement(container, x) {
+  const cards = [...container.querySelectorAll(".map-card:not(.dragging)")];
+
+  return cards.reduce(
+    (closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = x - (box.left + box.width / 2);
+
+      if (offset < 0 && offset > closest.offset) {
+        return { offset, element: child };
+      }
+      return closest;
+    },
+    { offset: Number.NEGATIVE_INFINITY }
+  ).element;
+}
+
+// ------------------------------------------------------------
+// 5) Capture du tableau en image
+// ------------------------------------------------------------
+function setupScreenshotButton() {
+  const btn = document.getElementById("capture-btn");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    const element = document.getElementById("tier-list");
+
+    html2canvas(element, {
+      allowTaint: true,
+      useCORS: true,
+      backgroundColor: null
+    }).then(canvas => {
+      const link = document.createElement("a");
+      link.href = canvas.toDataURL("image/png");
+      link.download = "tierlist.png";
+      link.click();
+    });
+  });
+}
