@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("[nav.js] Injection BOUTON LOGIN");
     authContainer.innerHTML = `
       <button id="auth-btn">
-        <img src="/assets/icons/download.png" alt="auth" />
+        <img src="/assets/icons/login.png" alt="auth" />
         <div class="text-right-button" id="auth-btn-text">LOGIN</div>
       </button>
     `;
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log("[nav.js] auth-btn après injection =", document.getElementById("auth-btn"));
 
-  // 🔥🔥🔥 CHARGEMENT DE auth.js APRÈS L’INJECTION 🔥🔥🔥
+ 
   const script = document.createElement("script");
   script.src = "/js/auth.js";
   document.body.appendChild(script);

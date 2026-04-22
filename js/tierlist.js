@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   setupTierDropZones();
-  setupScreenshotButton();
+  setupShareButton();
 });
 
 // ------------------------------------------------------------
@@ -101,24 +101,58 @@ function getDragAfterElement(container, x) {
 }
 
 // ------------------------------------------------------------
-// 5) Capture du tableau en image
+// 5) BOUTON SHARE (remplace totalement DOWNLOAD)
 // ------------------------------------------------------------
-function setupScreenshotButton() {
+function setupShareButton() {
   const btn = document.getElementById("capture-btn");
   if (!btn) return;
 
-  btn.addEventListener("click", () => {
-    const element = document.getElementById("tier-list");
+  btn.addEventListener("click", async () => {
 
-    html2canvas(element, {
+    // Vérifier si connecté
+    const auth = await fetch("http://localhost/api/me.php", { credentials: "include" })
+      .then(r => r.json());
+
+    if (!auth.authenticated) {
+      alert("You need to log in to share your tierlist on the website.");
+      return;
+    }
+
+    // Capture de la tierlist
+    const element = document.getElementById("tier-list");
+    const canvas = await html2canvas(element, {
       allowTaint: true,
       useCORS: true,
       backgroundColor: null
-    }).then(canvas => {
-      const link = document.createElement("a");
-      link.href = canvas.toDataURL("image/png");
-      link.download = "tierlist.png";
-      link.click();
     });
+
+    const imageData = canvas.toDataURL("image/png");
+
+    // Déterminer le type selon la page
+    let type = null;
+    if (document.body.classList.contains("page-maps")) type = "map";
+    if (document.body.classList.contains("page-bows")) type = "bow";
+    if (document.body.classList.contains("page-arrows")) type = "arrow";
+    if (document.body.classList.contains("page-skins")) type = "skin";
+    if (document.body.classList.contains("page-melees")) type = "melee";
+
+    // Envoi au backend
+    const res = await fetch("http://localhost/api/share.php", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        type: type,
+        data: imageData
+      })
+    });
+
+    const json = await res.json();
+
+    if (json.success) {
+      alert("Your tierlist has been shared successfully.");
+    } else {
+      alert("Error: " + json.error);
+    }
   });
 }
