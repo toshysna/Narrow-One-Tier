@@ -87,3 +87,14 @@ Plus besoin de répéter le menu dans chaque page.
     -une navigation centralisée
     -des scripts et assets accessibles depuis n’importe où
     -un code beaucoup plus facile à maintenir et à faire évoluer.
+50. Début du backend : création de la base MySQL n1tier et de la table users.
+51. Ajout d’un popup de connexion dynamique permettant de choisir la méthode d’authentification (Discord pour l’instant), entièrement généré et contrôlé en JavaScript.
+52. Création de discord-login.php pour lancer l’authentification OAuth2 Discord.
+53. Création de discord-callback.php pour récupérer le token, les infos utilisateur, insérer ou mettre à jour l’utilisateur en base, puis créer la session PHP.
+54. Création de me.php, endpoint JSON permettant au front de connaître l’état de connexion.
+55. Création de logout.php pour détruire la session et renvoyer vers le front.
+56. Mise en place de auth.js pour gérer automatiquement le bouton LOGIN/LOGOUT selon la session.
+57. Injection dynamique du bouton dans nav.js pour garantir l’ordre d’exécution.
+58. Activation de Access-Control-Allow-Credentials dans tous les fichiers backend.
+59. Validation du flux complet : bouton LOGIN → pop up choix connexion → login Discord → callback → session → retour front → bouton LOGOUT.
+

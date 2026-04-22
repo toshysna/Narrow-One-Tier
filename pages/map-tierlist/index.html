@@ -12,6 +12,10 @@
     <script defer src="/js/nav.js"></script>
     <script defer src="/js/tierlist.js"></script>
     <script defer src="/js/cards.js"></script>
+    <script defer src="/js/popup.js"></script>
+    <script defer src="/js/auth.js"></script>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   </head>
@@ -23,12 +27,40 @@
       <div id="left-buttons"></div>
       <div id="tier-list"></div>
 
-      <button id="capture-btn">
-        <img src="/assets/icons/download.png" alt="download" />
-        <div class="text-right-button">DOWNLOAD</div>
-      </button>
+     <div id="right-buttons">
+  <button id="capture-btn">
+    <img src="/assets/icons/download.png" alt="download" />
+    <div class="text-right-button">DOWNLOAD</div>
+  </button>
+
+  <div id="auth-button"></div>
+</div>
+
     </div>
+    
 
     <div id="maps"></div>
+    <!-- POPUP LOGIN -->
+<div id="login-popup" class="popup hidden">
+  <div class="popup-content">
+    <h2>Se connecter</h2>
+
+    <button class="login-option" id="login-discord">
+      <img src="/assets/icons/discord.png" />
+      <span>Se connecter avec Discord</span>
+    </button>
+
+    <!-- Plus tard : Google, Apple, etc. -->
+    <!--
+    <button class="login-option">
+      <img src="/assets/icons/google.png" />
+      <span>Se connecter avec Google</span>
+    </button>
+    -->
+
+    <button id="close-popup" class="close-btn">Fermer</button>
+  </div>
+</div>
+
   </body>
 </html>
