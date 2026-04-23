@@ -97,4 +97,17 @@ Plus besoin de répéter le menu dans chaque page.
 57. Injection dynamique du bouton dans nav.js pour garantir l’ordre d’exécution.
 58. Activation de Access-Control-Allow-Credentials dans tous les fichiers backend.
 59. Validation du flux complet : bouton LOGIN → pop up choix connexion → login Discord → callback → session → retour front → bouton LOGOUT.
+60. Refonte complète des pages de tierlist pour une cohérence totale (map/bow/arrow/skin/melee).
+61. Implémentation de l’authentification Discord OAuth2 avec stockage de l’URL complète de l’avatar.
+62. Ajout du workflow SHARE (html2canvas → API → écrasement automatique en base).
+63. Création du tableau de bord communautaire avec aperçu en direct des tierlists.
+64. Correction des problèmes de CORS, de routage et de types MIME sur l’ensemble du projet.
+65. Ajout du système de votes en temps réel (upvote/downvote) avec icônes SVG et états actifs.
+66. Implémentation de la mise à jour dynamique du score sans rechargement de page (frontend + backend synchronisés).
+67. Correction des problèmes de désynchronisation du score en normalisant les valeurs numériques au chargement.
+69. Amélioration du système de dropdown custom pour les filtres (catégorie/tri) avec synchronisation automatique.
+70. Ajout de la logique d’écrasement automatique par type de tierlist (map/bow/arrow/skin/melee).
+77. Normalisation du score au chargement pour éviter les concaténations de chaînes (“11”, “02”, etc.).
+81. Mise en place du tri Popular par défaut pour améliorer l’expérience utilisateur sur le dashboard.
+
 

@@ -7,7 +7,47 @@
 </head>
 <body>
 
+
     <h1 class="title">Community Tierlists</h1>
+<div id="filters">
+    <!-- Dropdown custom catégorie -->
+    <div class="filter-dropdown" data-filter="category">
+        <div class="filter-selected">All</div>
+        <div class="filter-options hidden">
+            <div class="filter-option" data-value="all">All</div>
+            <div class="filter-option" data-value="map">Map</div>
+            <div class="filter-option" data-value="bow">Bow</div>
+            <div class="filter-option" data-value="arrow">Arrow</div>
+            <div class="filter-option" data-value="skin">Skin</div>
+            <div class="filter-option" data-value="melee">Melee</div>
+        </div>
+    </div>
+
+    <!-- Dropdown custom tri -->
+    <div class="filter-dropdown" data-filter="sort">
+        <div class="filter-selected">Popular</div>
+        <div class="filter-options hidden">
+            <div class="filter-option" data-value="popular">Popular</div>
+            <div class="filter-option" data-value="recent">Recent</div>
+        </div>
+    </div>
+
+    <!-- Selects natifs cachés, utilisés par ton JS existant -->
+    <select id="filter-category" style="display:none;">
+        <option value="all">All</option>
+        <option value="map">Map</option>
+        <option value="bow">Bow</option>
+        <option value="arrow">Arrow</option>
+        <option value="skin">Skin</option>
+        <option value="melee">Melee</option>
+    </select>
+
+    <select id="filter-sort" style="display:none;">
+        <option value="recent">Recent</option>
+        <option value="popular">Popular</option>
+    </select>
+</div>
+
 
     <div id="community-container" class="community-container">
         <div class="loading">Loading tierlists...</div>
