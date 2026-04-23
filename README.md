@@ -109,5 +109,5 @@ Plus besoin de répéter le menu dans chaque page.
 70. Ajout de la logique d’écrasement automatique par type de tierlist (map/bow/arrow/skin/melee).
 77. Normalisation du score au chargement pour éviter les concaténations de chaînes (“11”, “02”, etc.).
 81. Mise en place du tri Popular par défaut pour améliorer l’expérience utilisateur sur le dashboard.
-
+82. Possibilité de supprimer ou de update un post de tierlist
 

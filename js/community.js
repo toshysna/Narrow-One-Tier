@@ -1,3 +1,4 @@
+
 let ALL_TIERLISTS = [];
 let auth = { authenticated: false };
 
@@ -34,6 +35,15 @@ fetch("http://localhost/api/get_tierlists.php", { credentials: "include" })
 
 
 
+function formatDateEN(dateString) {
+    const date = new Date(dateString);
+
+    return date.toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric"
+    });
+}
 
 // ------------------------------------------------------------
 // RENDER AVEC FILTRES + SCORE + UPVOTE/DOWNVOTE
@@ -73,8 +83,6 @@ function renderTierlists() {
         container.innerHTML += `
             <div class="tierlist-card" id="card-${t.id}">
 
-                <div class="type-tag">${t.type}</div>
-
                 ${isOwner ? `
                     <div class="options-menu">
                         <img src="/assets/icons/dots.svg" class="more-icon" data-id="${t.id}" data-type="${t.type}">
@@ -85,13 +93,25 @@ function renderTierlists() {
                     </div>
                 ` : ""}
 
-                <div class="author">
-                    <img class="avatar" src="${t.avatar}" alt="avatar">
-                    <div class="info">
-                        <span class="username">${t.global_name || t.username}</span>
-                        <span class="date">Updated on ${t.updated_at}</span>
+                <div class="author-row">
+                    <div class="author-left">
+                        <img class="avatar" src="${t.avatar}" alt="avatar">
+                        <div class="info">
+                            <span class="username">
+                            ${t.global_name || t.username}
+                            ${auth.authenticated && auth.user.id == t.user_id ? "<span style='opacity:0.6'>(you)</span>" : ""}
+                           </span>
+
+                            <span class="date">Updated on ${formatDateEN(t.updated_at)}</span>
+                        </div>
+                    </div>
+
+                    <div class="author-right">
+                        <img src="/assets/icons/${t.type}.png" class="type-icon">
+                        <span class="type-text">${t.type}</span>
                     </div>
                 </div>
+
 
                 <div class="tierlist-preview">
                     <img src="${t.data}" class="tierlist-image" alt="tierlist" />
@@ -299,3 +319,13 @@ document.querySelector(`#card-${id} .upvote`).classList.toggle("active", newVote
 document.querySelector(`#card-${id} .downvote`).classList.toggle("active", newVote === -1);
 
 }
+
+document.getElementById("back-maker").addEventListener("click", () => {
+    window.location.href = "/pages/map-tierlist/";
+});
+
+document.getElementById("my-profile").addEventListener("click", () => {
+    window.location.href = "/pages/profile/";
+});
+
+

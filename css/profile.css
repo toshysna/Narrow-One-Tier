@@ -1,0 +1,193 @@
+body {
+    background: #0f0f0f;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 20px;
+}
+
+#community-header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* bouton à gauche */
+    margin-bottom: 20px;
+}
+
+.header-btn {
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    margin-left: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.15s;
+    color: white;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Bouton Community → gris violet léger */
+#go-community {
+    background: #332b3f;
+}
+
+#go-community:hover {
+    background: #3f3450;
+}
+
+
+/* LEFT BUTTON → Tierlist Maker (light grey-red) */
+#back-maker {
+    background: #3a2b2b;
+}
+#back-maker:hover {
+    background: #4a3434;
+}
+
+/* RIGHT BUTTON → Community (light grey-purple) */
+#go-community {
+    background: #332b3f;
+}
+#go-community:hover {
+    background: #3f3450;
+}
+
+/* Title */
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+/* Container */
+.community-container {
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Card */
+.tierlist-card {
+    background: #1a1a1a;
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border: 1px solid #2a2a2a;
+    position: relative;
+}
+
+/* Author row */
+.author-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.author-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.username {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.date {
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* Icon + tag */
+.author-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.type-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.type-text {
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+/* Preview */
+.tierlist-preview {
+    background: #111;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #222;
+}
+
+.tierlist-image {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+/* Loading */
+.loading {
+    text-align: center;
+    color: #aaa;
+}
+
+/* Options menu */
+.options-menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.more-icon {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    filter: brightness(0) invert(1);
+}
+
+.dropdown {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 5px 0;
+    width: 120px;
+    z-index: 30;
+}
+
+.dropdown.hidden {
+    display: none;
+}
+
+.dropdown-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.dropdown-item:hover {
+    background: #333;
+}

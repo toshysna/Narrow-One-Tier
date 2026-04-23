@@ -1,7 +1,9 @@
     body {
         background: #0f0f0f;
         color: white;
-        font-family: Arial, sans-serif;
+        font-family: 'Inter', sans-serif;
+         -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
         margin: 0;
         padding: 20px;
     }
@@ -27,18 +29,7 @@
         position: relative;
     }
 
-    .author {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-    }
-
-    .avatar {
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        margin-right: 12px;
-    }
+   
 
     .info {
         display: flex;
@@ -218,3 +209,86 @@
     margin-top: 12px;
 }
 
+.author-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.author-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.author {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        margin-right: 12px;
+    }
+
+.author-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.type-icon {
+    width: 80px;   /* plus grand que la pfp */
+    height: 80px;
+    object-fit: contain;
+}
+
+.type-text {
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+/* Container */
+#community-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Base style */
+.header-btn {
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.15s;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600; /* léger gras, propre */
+
+}
+
+/* LEFT BUTTON → Tierlist Maker (light grey-red) */
+#back-maker {
+    background: #3a2b2b; /* gris foncé avec une pointe de rouge */
+}
+
+#back-maker:hover {
+    background: #4a3434; /* un peu plus clair au hover */
+}
+
+/* RIGHT BUTTON → My Profile (light grey-purple) */
+#my-profile {
+    background: #332b3f; /* gris foncé avec une pointe de violet */
+}
+
+#my-profile:hover {
+    background: #3f3450; /* un peu plus clair au hover */
+}
