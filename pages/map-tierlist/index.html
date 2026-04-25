@@ -6,12 +6,18 @@
     <meta name="description" content="Maps Tier List" />
     <meta name="author" content="Toshysna" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/assets/icons/map-icon.png">
 
     <link rel="stylesheet" href="/css/style.css" />
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
 
     <script defer src="/js/nav.js"></script>
     <script defer src="/js/tierlist.js"></script>
     <script defer src="/js/cards.js"></script>
+    <script defer src="/js/popup.js"></script>
+    <script defer src="/js/auth.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   </head>
@@ -23,12 +29,49 @@
       <div id="left-buttons"></div>
       <div id="tier-list"></div>
 
-      <button id="capture-btn">
-        <img src="/assets/icons/download.png" alt="download" />
-        <div class="text-right-button">DOWNLOAD</div>
-      </button>
+      <div id="right-buttons">
+
+        <div class="button-group nav-button" id="community-btn">
+          <img src="/assets/icons/community.png" alt="community" />
+          <div class="text-right-button">COMMUNITY</div>
+        </div>
+
+        <div class="button-group nav-button" id="share-btn">
+          <img src="/assets/icons/share.png" alt="share" />
+          <div class="text-right-button">SHARE</div>
+        </div>
+
+        <div id="auth-button"></div>
+
+      </div>
     </div>
 
     <div id="maps"></div>
+
+    <!-- LOGIN POPUP -->
+    <div id="login-popup" class="popup hidden">
+      <div class="popup-content">
+
+        <!-- CROIX (si tu veux l’activer, décommente) -->
+        <!-- <div class="popup-close-x">✕</div> -->
+
+        <h2>LOGIN</h2>
+
+        <button class="login-option" id="login-discord">
+          <img src="/assets/icons/discord.png" />
+          <span>LOGIN WITH DISCORD</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- RIVE LOGIN TOAST -->
+    <div id="rive-toast-wrapper">
+      <canvas id="rive-toast-canvas"></canvas>
+    </div>
+<!-- RIVE COMMUNITY SHARE TOAST -->
+<div id="rive-share-wrapper">
+    <canvas id="rive-share-canvas"></canvas>
+</div>
   </body>
 </html>

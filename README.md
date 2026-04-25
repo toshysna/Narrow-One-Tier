@@ -87,3 +87,38 @@ Plus besoin de répéter le menu dans chaque page.
     -une navigation centralisée
     -des scripts et assets accessibles depuis n’importe où
     -un code beaucoup plus facile à maintenir et à faire évoluer.
+50. Début du backend : création de la base MySQL n1tier et de la table users.
+51. Ajout d’un popup de connexion dynamique permettant de choisir la méthode d’authentification (Discord pour l’instant), entièrement généré et contrôlé en JavaScript.
+52. Création de discord-login.php pour lancer l’authentification OAuth2 Discord.
+53. Création de discord-callback.php pour récupérer le token, les infos utilisateur, insérer ou mettre à jour l’utilisateur en base, puis créer la session PHP.
+54. Création de me.php, endpoint JSON permettant au front de connaître l’état de connexion.
+55. Création de logout.php pour détruire la session et renvoyer vers le front.
+56. Mise en place de auth.js pour gérer automatiquement le bouton LOGIN/LOGOUT selon la session.
+57. Injection dynamique du bouton dans nav.js pour garantir l’ordre d’exécution.
+58. Activation de Access-Control-Allow-Credentials dans tous les fichiers backend.
+59. Validation du flux complet : bouton LOGIN → pop up choix connexion → login Discord → callback → session → retour front → bouton LOGOUT.
+60. Refonte complète des pages de tierlist pour une cohérence totale (map/bow/arrow/skin/melee).
+61. Implémentation de l’authentification Discord OAuth2 avec stockage de l’URL complète de l’avatar.
+62. Ajout du workflow SHARE (html2canvas → API → écrasement automatique en base).
+63. Création du tableau de bord communautaire avec aperçu en direct des tierlists.
+64. Correction des problèmes de CORS, de routage et de types MIME sur l’ensemble du projet.
+65. Ajout du système de votes en temps réel (upvote/downvote) avec icônes SVG et états actifs.
+66. Implémentation de la mise à jour dynamique du score sans rechargement de page (frontend + backend synchronisés).
+67. Correction des problèmes de désynchronisation du score en normalisant les valeurs numériques au chargement.
+69. Amélioration du système de dropdown custom pour les filtres (catégorie/tri) avec synchronisation automatique.
+70. Ajout de la logique d’écrasement automatique par type de tierlist (map/bow/arrow/skin/melee).
+77. Normalisation du score au chargement pour éviter les concaténations de chaînes (“11”, “02”, etc.).
+81. Mise en place du tri Popular par défaut pour améliorer l’expérience utilisateur sur le dashboard.
+82. Possibilité de supprimer ou de update un post de tierlist
+83. Refonte complète du popup login (UI, UX, responsive)
+84. Rebuild du header (Community, Profile, Maker)
+85. Refonte du système de partage + ajout du toast Rive “shared_community”
+86. Ajout des animations Rive pour login_share et login_upvote
+87. Stabilisation du système de votes (score, user_vote, DOM, API)
+88. Correction de l’auth Community (plus de faux positifs)
+89. Refonte complète de la page Community (UI, filtres, tri, actions)
+90. Ajout du tri Recent par défaut
+91. Ajout du fullscreen viewer
+93. Nettoyage global du code (JS, CSS, DOM)
+94. Finalisation de la version 2.0 du site
+
