@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Connexion Discord
   discordBtn.addEventListener("click", () => {
     console.log("CLICK DISCORD → redirection");
-    window.location.href = "http://localhost/api/discord-login.php";
+    window.location.href = "https://n1tier.alwaysdata.net/api/discord-login.php";
   });
 
 });
