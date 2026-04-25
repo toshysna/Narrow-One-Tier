@@ -4,23 +4,7 @@
 const TIERS = ["S", "A", "B", "C", "EW"];
 
 // ------------------------------------------------------------
-// 2) Création de la structure du tableau
-// ------------------------------------------------------------
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("tier-list");
-  if (!container) return;
-
-  TIERS.forEach(tierName => {
-    const row = createTierRow(tierName);
-    container.appendChild(row);
-  });
-
-  setupTierDropZones();
-  setupShareButton();
-});
-
-// ------------------------------------------------------------
-// 3) Création d'une rangée (S, A, B, C, EW)
+// 2) Création d'une rangée (S, A, B, C, EW)
 // ------------------------------------------------------------
 function createTierRow(name) {
   const row = document.createElement("div");
@@ -30,7 +14,6 @@ function createTierRow(name) {
   title.textContent = name;
   title.contentEditable = true;
 
-  // Empêche qu'on drop sur le titre
   title.addEventListener("dragover", e => e.preventDefault());
   title.addEventListener("drop", e => e.preventDefault());
 
@@ -44,7 +27,7 @@ function createTierRow(name) {
 }
 
 // ------------------------------------------------------------
-// 4) Gestion du drag & drop dans les zones de tier
+// 3) Gestion du drag & drop
 // ------------------------------------------------------------
 function setupTierDropZones() {
   const zones = document.querySelectorAll(".tier-cards");
@@ -57,12 +40,8 @@ function setupTierDropZones() {
       if (!draggedCard) return;
 
       const afterElement = getDragAfterElement(zone, e.clientX);
-
-      if (!afterElement) {
-        zone.appendChild(draggedCard);
-      } else {
-        zone.insertBefore(draggedCard, afterElement);
-      }
+      if (!afterElement) zone.appendChild(draggedCard);
+      else zone.insertBefore(draggedCard, afterElement);
     });
 
     zone.addEventListener("drop", e => {
@@ -72,17 +51,12 @@ function setupTierDropZones() {
       if (!draggedCard) return;
 
       const afterElement = getDragAfterElement(zone, e.clientX);
-
-      if (!afterElement) {
-        zone.appendChild(draggedCard);
-      } else {
-        zone.insertBefore(draggedCard, afterElement);
-      }
+      if (!afterElement) zone.appendChild(draggedCard);
+      else zone.insertBefore(draggedCard, afterElement);
     });
   });
 }
 
-// Trouve la carte la plus proche pour insérer avant/après
 function getDragAfterElement(container, x) {
   const cards = [...container.querySelectorAll(".map-card:not(.dragging)")];
 
@@ -101,24 +75,22 @@ function getDragAfterElement(container, x) {
 }
 
 // ------------------------------------------------------------
-// 5) BOUTON SHARE (remplace totalement DOWNLOAD)
+// 4) BOUTON SHARE
 // ------------------------------------------------------------
 function setupShareButton() {
-  const btn = document.getElementById("capture-btn");
+  const btn = document.getElementById("share-btn");
   if (!btn) return;
 
   btn.addEventListener("click", async () => {
 
-    // Vérifier si connecté
     const auth = await fetch("http://localhost/api/me.php", { credentials: "include" })
       .then(r => r.json());
 
     if (!auth.authenticated) {
-      alert("You need to log in to share your tierlist on the website.");
-      return;
+        playRiveLoginToast();
+        return;
     }
 
-    // Capture de la tierlist
     const element = document.getElementById("tier-list");
     const canvas = await html2canvas(element, {
       allowTaint: true,
@@ -128,7 +100,6 @@ function setupShareButton() {
 
     const imageData = canvas.toDataURL("image/png");
 
-    // Déterminer le type selon la page
     let type = null;
     if (document.body.classList.contains("page-maps")) type = "map";
     if (document.body.classList.contains("page-bows")) type = "bow";
@@ -136,23 +107,128 @@ function setupShareButton() {
     if (document.body.classList.contains("page-skins")) type = "skin";
     if (document.body.classList.contains("page-melees")) type = "melee";
 
-    // Envoi au backend
     const res = await fetch("http://localhost/api/share.php", {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        type: type,
-        data: imageData
-      })
+      body: new URLSearchParams({ type, data: imageData })
     });
 
     const json = await res.json();
 
     if (json.success) {
-      alert("Your tierlist has been shared successfully.");
-    } else {
-      alert("Error: " + json.error);
-    }
+    playRiveShareToast();
+    return;
+}
   });
 }
+
+// ------------------------------------------------------------
+// 5) BOUTON COMMUNITY
+// ------------------------------------------------------------
+function setupCommunityButton() {
+  const communityBtn = document.getElementById("community-btn");
+  if (!communityBtn) return;
+
+  communityBtn.addEventListener("click", () => {
+    window.location.href = "/pages/community/?category=all&sort=recent";
+  });
+}
+
+// ------------------------------------------------------------
+// 6) INITIALISATION GLOBALE + RIVE
+// ------------------------------------------------------------
+let riveLogin;
+
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOM READY — RIVE INIT SHOULD RUN");
+
+    const container = document.getElementById("tier-list");
+    if (!container) return;
+
+    TIERS.forEach(tierName => {
+        const row = createTierRow(tierName);
+        container.appendChild(row);
+    });
+
+    setupTierDropZones();
+    setupShareButton();
+    setupCommunityButton();
+
+    // --- RIVE INIT ---
+    const canvas = document.getElementById("rive-toast-canvas");
+
+    // Résolution interne → animation nette
+    canvas.width = 600;
+    canvas.height = 600;
+
+    riveLogin = new rive.Rive({
+        src: "/assets/animations/login_share.riv",
+        canvas: canvas,
+        autoplay: false,
+        stateMachines: "State Machine 1",
+        onLoad: () => {
+            // Ajuste le rendu → proportions parfaites
+            riveLogin.resizeDrawingSurfaceToCanvas();
+        }
+    });
+
+    console.log("CANVAS =", canvas);
+    console.log("RIVE =", riveLogin);
+});
+
+// --- RIVE SHARE INIT ---
+let riveShare;
+
+const shareCanvas = document.getElementById("rive-share-canvas");
+if (shareCanvas) {
+    shareCanvas.width = 600;
+    shareCanvas.height = 600;
+
+    riveShare = new rive.Rive({
+        src: "/assets/animations/shared_community.riv",
+        canvas: shareCanvas,
+        autoplay: false,
+        stateMachines: "State Machine 1",
+        onLoad: () => {
+            riveShare.resizeDrawingSurfaceToCanvas();
+        }
+    });
+}
+
+// ------------------------------------------------------------
+// 7) TOAST RIVE
+// ------------------------------------------------------------
+function playRiveLoginToast() {
+    const wrapper = document.getElementById("rive-toast-wrapper");
+    wrapper.classList.add("show");
+
+    // Récupère les inputs de la state machine
+    const inputs = riveLogin.stateMachineInputs("State Machine 1");
+    const trigger = inputs.find(i => i.type === "trigger");
+
+    // Déclenche l'animation
+    if (trigger) trigger.fire();
+    else riveLogin.play();
+
+    // Quand l'animation se termine → cacher le toast
+    riveLogin.on("stop", () => {
+        wrapper.classList.remove("show");
+    });
+}
+
+function playRiveShareToast() {
+    const wrapper = document.getElementById("rive-share-wrapper");
+    wrapper.classList.add("show");
+
+    const inputs = riveShare.stateMachineInputs("State Machine 1");
+    const trigger = inputs.find(i => i.type === "trigger");
+
+    if (trigger) trigger.fire();
+    else riveShare.play();
+
+    riveShare.on("stop", () => {
+        wrapper.classList.remove("show");
+    });
+}
+

@@ -4,17 +4,29 @@
     <meta charset="UTF-8">
     <title>Community Tierlists</title>
    <link rel="stylesheet" href="/css/community.css">
+   <script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
+
    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <link rel="icon" type="image/png" href="/assets/logo/narrow one tier color logo Carre.png">
+
 
 </head>
 <body>
 <div id="community-header">
-    <button id="back-maker" class="header-btn">← Tierlist Maker</button>
-    <button id="my-profile" class="header-btn">→ My Profile</button>
+    <a id="back-maker" class="header-link">
+        <img src="/assets/icons/arrow-left.png" class="header-icon">
+        <div class="header-text">TIERLIST MAKER</div>
+    </a>
+
+    <a id="my-profile" class="header-link">
+        <div class="header-text">MY PROFILE</div>
+        <img src="/assets/icons/arrow-right.png" class="header-icon">
+    </a>
 </div>
 
 
-    <h1 class="title">Community Tierlists</h1>
+
+    <h1 class="title">COMMUNITY TIERLISTS</h1>
 <div id="filters">
     <!-- Dropdown custom catégorie -->
     <div class="filter-dropdown" data-filter="category">
@@ -33,8 +45,8 @@
     <div class="filter-dropdown" data-filter="sort">
         <div class="filter-selected">Popular</div>
         <div class="filter-options hidden">
-            <div class="filter-option" data-value="popular">Popular</div>
             <div class="filter-option" data-value="recent">Recent</div>
+            <div class="filter-option" data-value="popular">Popular</div>
         </div>
     </div>
 
@@ -58,6 +70,13 @@
     <div id="community-container" class="community-container">
         <div class="loading">Loading tierlists...</div>
     </div>
+<div id="image-viewer" class="hidden">
+    <div id="image-viewer-overlay"></div>
+    <img id="image-viewer-img" src="">
+</div>
+<div id="rive-upvote-wrapper">
+    <canvas id="rive-upvote-canvas"></canvas>
+</div>
 
     <script defer src="/js/community.js"></script>
 </body>

@@ -46,24 +46,33 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // NAV DROITE — BOUTON LOGIN
-  const authContainer = document.getElementById("auth-button");
-  console.log("[nav.js] auth-button =", authContainer);
+const authContainer = document.getElementById("auth-button");
+console.log("[nav.js] auth-button =", authContainer);
 
-  if (authContainer) {
-    console.log("[nav.js] Injection BOUTON LOGIN");
-    authContainer.innerHTML = `
-      <button id="auth-btn">
-        <img src="/assets/icons/login.png" alt="auth" />
-        <div class="text-right-button" id="auth-btn-text">LOGIN</div>
-      </button>
-    `;
-  }
+if (authContainer) {
+  console.log("[nav.js] Injection BOUTON LOGIN");
+ authContainer.innerHTML = `
+  <button id="auth-btn" class="nav-button">
+    <img src="/assets/icons/login.png" alt="login" />
+    <div class="text-right-button" id="auth-btn-text">LOGIN</div>
+  </button>
+`;
 
-  console.log("[nav.js] auth-btn après injection =", document.getElementById("auth-btn"));
+}
+const communityBtn = document.getElementById("community-btn");
 
- 
-  const script = document.createElement("script");
-  script.src = "/js/auth.js";
-  document.body.appendChild(script);
-  console.log("[nav.js] auth.js chargé dynamiquement");
+if (communityBtn) {
+  communityBtn.addEventListener("click", () => {
+    window.location.href = "/pages/community/";
+  });
+}
+
+console.log("[nav.js] auth-btn après injection =", document.getElementById("auth-btn"));
+
+const script = document.createElement("script");
+script.src = "/js/auth.js";
+document.body.appendChild(script);
+console.log("[nav.js] auth.js chargé dynamiquement");
+
 });
+

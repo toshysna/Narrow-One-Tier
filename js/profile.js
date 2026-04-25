@@ -169,9 +169,6 @@ function setupUpdateActions() {
 // ------------------------------------------------------------
 // HEADER BUTTONS
 // ------------------------------------------------------------
-document.getElementById("back-maker").addEventListener("click", () => {
-    window.location.href = "/pages/map-tierlist/";
-});
 
 document.getElementById("go-community").addEventListener("click", () => {
     window.location.href = "/pages/community/";

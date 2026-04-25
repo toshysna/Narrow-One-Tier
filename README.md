@@ -110,4 +110,15 @@ Plus besoin de répéter le menu dans chaque page.
 77. Normalisation du score au chargement pour éviter les concaténations de chaînes (“11”, “02”, etc.).
 81. Mise en place du tri Popular par défaut pour améliorer l’expérience utilisateur sur le dashboard.
 82. Possibilité de supprimer ou de update un post de tierlist
+83. Refonte complète du popup login (UI, UX, responsive)
+84. Rebuild du header (Community, Profile, Maker)
+85. Refonte du système de partage + ajout du toast Rive “shared_community”
+86. Ajout des animations Rive pour login_share et login_upvote
+87. Stabilisation du système de votes (score, user_vote, DOM, API)
+88. Correction de l’auth Community (plus de faux positifs)
+89. Refonte complète de la page Community (UI, filtres, tri, actions)
+90. Ajout du tri Recent par défaut
+91. Ajout du fullscreen viewer
+93. Nettoyage global du code (JS, CSS, DOM)
+94. Finalisation de la version 2.0 du site
 

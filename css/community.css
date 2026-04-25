@@ -1,3 +1,16 @@
+    /* ===========================
+   FONT
+=========================== */
+
+@font-face {
+  font-family: "BlueNight-Regular";
+  src: url("../assets/fonts/BlueNight-Regular.ttf") format("truetype");
+  font-weight: lighter;
+  font-style: normal;
+}
+    /* ===========================
+    COMMUNITY PAGE
+=========================== */
     body {
         background: #0f0f0f;
         color: white;
@@ -8,12 +21,20 @@
         padding: 20px;
     }
 
-    .title {
-        text-align: center;
-        margin-bottom: 30px;
-        font-size: 32px;
-        font-weight: bold;
-    }
+   .title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 40px;
+    font-family: "BlueNight-Regular", sans-serif !important;
+
+    /* Stroke extérieur parfait */
+    color: transparent;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke: 1px black;
+
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.9);
+}
+
 
     .community-container {
         max-width: 900px;
@@ -252,7 +273,72 @@
     font-weight: 600;
     text-transform: capitalize;
 }
-/* Container */
+
+.vote-row {
+    display: flex;
+    justify-content: space-between; /* vote à gauche, icône à droite */
+    align-items: center;            /* même hauteur */
+    margin-top: 12px;
+}
+
+.vote-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.expand-container {
+    display: flex;
+    align-items: center;
+}
+
+.expand-icon {
+    width: 26px;
+    height: 26px;
+    filter: brightness(0) invert(1);
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.15s ease;
+}
+
+.expand-icon:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+#image-viewer {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#image-viewer.hidden {
+    display: none;
+}
+
+#image-viewer-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(4px);
+}
+
+/* Image fullscreen de base */
+#image-viewer-img {
+    max-width: 96%;
+    max-height: 96%;
+    border-radius: 10px;
+    z-index: 10000;
+    transition: transform 0.2s ease;
+}
+
+/* ===========================
+   HEADER COMMUNITY LINKS
+=========================== */
+
 #community-header {
     width: 100%;
     display: flex;
@@ -261,34 +347,80 @@
     margin-bottom: 20px;
 }
 
-/* Base style */
-.header-btn {
-    border: none;
-    padding: 10px 16px;
-    border-radius: 6px;
-    font-size: 15px;
+/* Container cliquable */
+.header-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     cursor: pointer;
-    transition: 0.15s;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: 0.15s ease;
+}
+
+/* Icônes flèches */
+.header-icon {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    filter: drop-shadow(0px 0px 4px black);
+    transition: 0.15s ease;
+}
+
+/* Texte style Tierlist Maker */
+.header-text {
+    font-family: "BlueNight-Regular", sans-serif !important;
     color: white;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600; /* léger gras, propre */
-
+    font-size: 23px;
+    -webkit-text-stroke: 1px black;
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.9);
+    position: relative;
+    top: 4px;
 }
 
-/* LEFT BUTTON → Tierlist Maker (light grey-red) */
-#back-maker {
-    background: #3a2b2b; /* gris foncé avec une pointe de rouge */
+/* Hover */
+.header-link:hover .header-icon {
+    filter: brightness(0.8) drop-shadow(0px 0px 6px black);
+    transform: scale(1.05);
 }
 
-#back-maker:hover {
-    background: #4a3434; /* un peu plus clair au hover */
+/* Responsive */
+@media (max-width: 600px) {
+    .header-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .header-text {
+        font-size: 18px;
+    }
 }
 
-/* RIGHT BUTTON → My Profile (light grey-purple) */
-#my-profile {
-    background: #332b3f; /* gris foncé avec une pointe de violet */
+#rive-upvote-wrapper {
+ position: fixed;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%); /* centre horizontalement */
+    z-index: 999999999;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
 }
 
-#my-profile:hover {
-    background: #3f3450; /* un peu plus clair au hover */
+#rive-upvote-wrapper.show {
+  opacity: 1;
+}
+
+#rive-toast-canvas {
+    width: 600px;   /* taille affichée */
+    height: 600px;  /* proportions parfaites */
+    display: block;
+}
+/* Mobile */
+@media (max-width: 600px) {
+    #rive-upvote-wrapper {
+        width: 300px;
+        height: 300px;
+    }
 }

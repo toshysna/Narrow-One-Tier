@@ -1,4 +1,3 @@
-
 let ALL_TIERLISTS = [];
 let auth = { authenticated: false };
 
@@ -20,11 +19,11 @@ fetch("http://localhost/api/get_tierlists.php", { credentials: "include" })
       }));
 
       // ⭐ POPULAR PAR DÉFAUT
-      document.getElementById("filter-sort").value = "popular";
+      document.getElementById("filter-sort").value = "recent";
 
       // ⭐ Mettre à jour le dropdown custom
       const sortDropdown = document.querySelector('[data-filter="sort"] .filter-selected');
-      if (sortDropdown) sortDropdown.textContent = "Popular";
+      if (sortDropdown) sortDropdown.textContent = "Recent";
 
       renderTierlists();
   })
@@ -118,24 +117,34 @@ function renderTierlists() {
                 </div>
 
                 <!-- ⭐ UPVOTE / DOWNVOTE ⭐ -->
-                <div class="vote-section">
+                <div class="vote-row">
 
-                <span class="upvote ${t.user_vote == 1 ? "active" : ""}" data-id="${t.id}">
-                    <svg viewBox="0 0 24 24" class="vote-icon">
-                        <path d="M12 4 L4 14 H10 V20 H14 V14 H20 Z"/>
-                    </svg>
-                </span>
+                    <div class="vote-section">
 
-                <span class="score" id="score-${t.id}">${t.score}</span>
+                        <span class="upvote ${t.user_vote == 1 ? "active" : ""}" data-id="${t.id}">
+                            <svg viewBox="0 0 24 24" class="vote-icon">
+                                <path d="M12 4 L4 14 H10 V20 H14 V14 H20 Z"/>
+                            </svg>
+                        </span>
 
-                <span class="downvote ${t.user_vote == -1 ? "active" : ""}" data-id="${t.id}">
-                    <svg viewBox="0 0 24 24" class="vote-icon">
-                        <path d="M12 20 L4 10 H10 V4 H14 V10 H20 Z"/>
-                    </svg>
-                </span>
+                        <span class="score" id="score-${t.id}">${t.score}</span>
 
-            </div>
+                        <span class="downvote ${t.user_vote == -1 ? "active" : ""}" data-id="${t.id}">
+                            <svg viewBox="0 0 24 24" class="vote-icon">
+                                <path d="M12 20 L4 10 H10 V4 H14 V10 H20 Z"/>
+                            </svg>
+                        </span>
 
+                    </div>
+
+                    <div class="expand-container">
+                        <img src="/assets/icons/fullScreen.svg"
+                             class="expand-icon"
+                             data-full="${t.data}"
+                             alt="expand">
+                    </div>
+
+                </div>
 
             </div>
         `;
@@ -283,6 +292,13 @@ function setupVotes() {
 }
 
 async function sendVote(id, vote) {
+
+    // ⭐ SI NON CONNECTÉ → jouer l’animation et STOP
+    if (!auth || !auth.authenticated) {
+        playRiveUpvote();
+        return;
+    }
+
     const res = await fetch("http://localhost/api/vote_tierlist.php", {
         method: "POST",
         credentials: "include",
@@ -315,11 +331,22 @@ async function sendVote(id, vote) {
     const scoreEl = document.getElementById(`score-${id}`);
     if (scoreEl) scoreEl.textContent = t.score;
 
-document.querySelector(`#card-${id} .upvote`).classList.toggle("active", newVote === 1);
-document.querySelector(`#card-${id} .downvote`).classList.toggle("active", newVote === -1);
+    const upEl = document.querySelector(`#card-${id} .upvote`);
+    const downEl = document.querySelector(`#card-${id} .downvote`);
 
+    if (!upEl || !downEl) return;
+
+    upEl.classList.toggle("active", newVote === 1);
+    downEl.classList.toggle("active", newVote === -1);
+
+    // ici, on ne joue PAS le toast pour les connectés
+    // si tu veux aussi une anim pour les connectés, tu peux en ajouter une autre ici
 }
 
+
+// ------------------------------------------------------------
+// NAV
+// ------------------------------------------------------------
 document.getElementById("back-maker").addEventListener("click", () => {
     window.location.href = "/pages/map-tierlist/";
 });
@@ -328,4 +355,76 @@ document.getElementById("my-profile").addEventListener("click", () => {
     window.location.href = "/pages/profile/";
 });
 
+// ------------------------------------------------------------
+// ⭐ 7) IMAGE VIEWER
+// ------------------------------------------------------------
 
+// Active le fullscreen sur l'icône expand
+document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("expand-icon")) {
+        const full = e.target.dataset.full;
+        openImageViewer(full);
+    }
+});
+
+function openImageViewer(src) {
+    const viewer = document.getElementById("image-viewer");
+    const viewerImg = document.getElementById("image-viewer-img");
+
+    viewerImg.src = src;
+    viewer.classList.remove("hidden");
+}
+
+function closeImageViewer() {
+    document.getElementById("image-viewer").classList.add("hidden");
+}
+
+// Fermer en cliquant sur le fond
+document.getElementById("image-viewer-overlay").addEventListener("click", closeImageViewer);
+
+// Fermer avec ESC
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeImageViewer();
+});
+
+// ------------------------------------------------------------
+// RIVE UPVOTE ANIMATION
+// ------------------------------------------------------------
+let riveUpvote;
+
+document.addEventListener("DOMContentLoaded", () => {
+    const canvas = document.getElementById("rive-upvote-canvas");
+    if (!canvas) return;
+
+    // Résolution interne → animation nette
+    canvas.width = 600;
+    canvas.height = 600;
+
+    riveUpvote = new rive.Rive({
+        src: "/assets/animations/login_upvote.riv",
+        canvas: canvas,
+        autoplay: false,
+        stateMachines: "State Machine 1",
+        onLoad: () => {
+            riveUpvote.resizeDrawingSurfaceToCanvas();
+        }
+    });
+});
+
+// ------------------------------------------------------------
+// PLAY UPVOTE ANIMATION
+// ------------------------------------------------------------
+function playRiveUpvote() {
+    const wrapper = document.getElementById("rive-upvote-wrapper");
+    wrapper.classList.add("show");
+
+    const inputs = riveUpvote.stateMachineInputs("State Machine 1");
+    const trigger = inputs.find(i => i.type === "trigger");
+
+    if (trigger) trigger.fire();
+    else riveUpvote.play();
+
+    riveUpvote.on("stop", () => {
+        wrapper.classList.remove("show");
+    });
+}

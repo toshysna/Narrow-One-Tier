@@ -16,7 +16,9 @@
 body {
   font-family: BlueNight-Regular;
   margin: 0;
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
   letter-spacing: 1px;
 }
 
@@ -178,6 +180,7 @@ body.page-skins {
 .logo {
   display: block;
   margin: 0 auto;
+  padding-top: 20px;
   max-width: 90%;
   padding-bottom: 10px;
 }
@@ -243,11 +246,12 @@ font-family: "BlueNight-Regular";
   filter: brightness(0.8);
 }
 
+
 /* ===========================
-   CAPTURE BUTTON
+   RIGHT NAV BUTTONS (Community + Share)
 =========================== */
 
-#capture-btn {
+.right-nav-button {
   display: flex;
   align-items: center;
   gap: 0px;
@@ -256,6 +260,40 @@ font-family: "BlueNight-Regular";
   cursor: pointer;
   padding: 8px 12px;
 }
+
+.right-nav-button img {
+  width: 90px;
+  height: 90px;
+  transition: filter 0.2s;
+}
+
+.right-nav-button img:hover {
+  filter: brightness(0.8);
+}
+
+.text-right-button {
+  color: white;
+  font-size: 23px;
+  -webkit-text-stroke: 1px black;
+  text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.9);
+  font-family: "BlueNight-Regular";
+}
+
+/* LOGIN : enlever fond blanc */
+#auth-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* DESKTOP → colonne */
+#right-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
 
 /* ===========================
    RESPONSIVE — TABLETTE
@@ -331,7 +369,15 @@ font-family: "BlueNight-Regular";
   body, html {
     overflow-x: hidden;
   }
+
+  /* TABLETTE → ligne */
+  #right-buttons {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+  }
 }
+
 
 /* ===========================
    RESPONSIVE — MI TABLETTE MI ORDI
@@ -339,22 +385,20 @@ font-family: "BlueNight-Regular";
 
 @media (min-width: 1430px) and (max-width: 1700px) {
 
-  /* Cache les textes des boutons */
   .text-left-button,
   .text-right-button {
     display: none;
   }
 
-  /* Centre mieux les icônes quand le texte disparaît */
   .button-group {
     justify-content: center;
   }
 
-  /* Optionnel : réduire un peu l’espace vide */
   #left-buttons {
     gap: 15px;
   }
 }
+
 
 /* ===========================
    RESPONSIVE — MOBILE
@@ -391,52 +435,68 @@ font-family: "BlueNight-Regular";
     width: 60px;
     height: 60px;
   }
-}
 
-@media (max-width: 600px) {
+  /* MOBILE → ligne */
   #right-buttons {
     flex-direction: row;
     justify-content: center;
+    gap: 10px;
   }
 
-  #capture-btn img,
   #auth-btn img {
     width: 60px;
     height: 60px;
   }
 }
+/* ===========================
+   RIVE PANNEAU DE TOAST
+=========================== */
+/* Wrapper centré en haut */
+#rive-toast-wrapper {
+    position: fixed;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%); /* centre horizontalement */
+    z-index: 999999999;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+}
+
+/* Visible */
+#rive-toast-wrapper.show {
+    opacity: 1;
+}
+
+/* Canvas en taille réelle 800×800 */
+#rive-toast-canvas {
+    width: 600px;   /* taille affichée */
+    height: 600px;  /* proportions parfaites */
+    display: block;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    #rive-toast-canvas {
+        width: 300px;
+        height: 300px;
+    }
+}
 
 /* ===========================
-   NAV DROITE
+   POP UP LOGIN — VERSION NEUTRE
 =========================== */
-/* Bouton LOGIN/LOGOUT (même style que DOWNLOAD) */
-#auth-btn {
-  display: flex;
-  align-items: center;
-  gap: 0px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 8px 12px;
+.popup-content,
+.popup-content * {
+    font-family: "BlueNight-Regular", sans-serif !important;
 }
 
-#auth-btn img {
-  width: 90px;
-  height: 90px;
-  transition: filter 0.2s;
-}
-
-#auth-btn img:hover {
-  filter: brightness(0.8);
-}
-/* ===========================
-   POP UP
-=========================== */
-/* POPUP OVERLAY */
+/* OVERLAY */
 .popup {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(3px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -450,38 +510,52 @@ font-family: "BlueNight-Regular";
 
 /* CONTENU DU POPUP */
 .popup-content {
-  background: #111;
-  border: 2px solid black;
-  border-radius: 12px;
-  padding: 25px;
+  background: #454545;
+  padding: 30px 40px;
   width: 90%;
   max-width: 350px;
+
+  border: none;
+  border-radius: 0;
+
+  box-shadow: 0px 6px 18px rgba(0,0,0,0.45);
+
+  /* ❌ PAS DE FONT ICI */
+  /* ❌ PAS DE LOWERCASE */
+
   text-align: center;
   color: white;
-  font-family: BlueNight-Regular;
 }
 
 /* TITRE */
 .popup-content h2 {
-  font-size: 26px;
-  margin-bottom: 20px;
-  text-transform: uppercase;
+  font-size: 32px;
+  margin-bottom: 25px;
+  color: white;
+  font-weight: lighter;
+    line-height: 0.7em;
 }
 
-/* BOUTON DISCORD */
+/* BOUTON DISCORD — STYLE POPUP */
 .login-option {
   width: 100%;
-  background: #5865F2;
-  border: none;
-  padding: 12px;
-  border-radius: 10px;
-  cursor: pointer;
+  padding: 8px 14px;
+  font-size: 22px;
+  font-weight: lighter;
+  line-height: 0.7em;
+
   display: flex;
   align-items: center;
-  gap: 12px;
   justify-content: center;
-  margin-bottom: 15px;
-  transition: 0.2s;
+  gap: 12px;
+
+  background: #454545;        /* même fond que le popup */
+  color: white;
+  border: 2px solid white;    /* contour blanc */
+  border-radius: 0;
+  cursor: pointer;
+
+  transition: background 0.2s, filter 0.2s;
 }
 
 .login-option img {
@@ -489,22 +563,32 @@ font-family: "BlueNight-Regular";
   height: 32px;
 }
 
-
-.discord-btn:hover {
-  filter: brightness(0.9);
+/* HOVER → un peu plus sombre */
+.login-option:hover {
+  background: #3a3a3a;        /* gris plus sombre */
+  filter: brightness(1);      /* on neutralise ton ancien effet */
 }
 
-/* BOUTON FERMER */
-.close-btn {
-  background: #444;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  color: white;
-  transition: 0.2s;
+#rive-share-wrapper {
+   position: fixed;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%); /* centre horizontalement */
+    z-index: 999999999;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
 }
 
-.close-btn:hover {
-  background: #555;
+#rive-share-wrapper.show {
+  opacity: 1;
 }
+
+/* Mobile */
+@media (max-width: 600px) {
+    #rive-toast-canvas {
+        width: 300px;
+        height: 300px;
+    }
+}
+
