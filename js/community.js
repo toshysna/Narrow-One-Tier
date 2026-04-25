@@ -2,12 +2,12 @@ let ALL_TIERLISTS = [];
 let auth = { authenticated: false };
 
 // Chargement des tierlists
-fetch("http://localhost/api/get_tierlists.php", { credentials: "include" })
+fetch("https://n1tier.alwaysdata.net/api/get_tierlists.php", { credentials: "include" })
   .then(res => res.json())
   .then(async list => {
 
       // Récupérer l'utilisateur connecté
-      auth = await fetch("http://localhost/api/me.php", { credentials: "include" })
+      auth = await fetch("https://n1tier.alwaysdata.net/api/me.php", { credentials: "include" })
           .then(r => r.json())
           .catch(() => ({ authenticated: false }));
 
@@ -189,7 +189,7 @@ function setupDeleteActions() {
         btn.addEventListener("click", async () => {
             const id = btn.dataset.id;
 
-            const res = await fetch("http://localhost/api/delete_tierlist.php", {
+            const res = await fetch("https://n1tier.alwaysdata.net/api/delete_tierlist.php", {
                 method: "POST",
                 credentials: "include",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -299,7 +299,7 @@ async function sendVote(id, vote) {
         return;
     }
 
-    const res = await fetch("http://localhost/api/vote_tierlist.php", {
+    const res = await fetch("https://n1tier.alwaysdata.net/api/vote_tierlist.php", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -338,9 +338,6 @@ async function sendVote(id, vote) {
 
     upEl.classList.toggle("active", newVote === 1);
     downEl.classList.toggle("active", newVote === -1);
-
-    // ici, on ne joue PAS le toast pour les connectés
-    // si tu veux aussi une anim pour les connectés, tu peux en ajouter une autre ici
 }
 
 

@@ -2,12 +2,12 @@ let ALL_TIERLISTS = [];
 let auth = { authenticated: false };
 
 // Charger toutes les tierlists
-fetch("http://localhost/api/get_tierlists.php", { credentials: "include" })
+fetch("https://n1tier.alwaysdata.net/api/get_tierlists.php", { credentials: "include" })
   .then(res => res.json())
   .then(async list => {
 
       // Récupérer l'utilisateur connecté
-      auth = await fetch("http://localhost/api/me.php", { credentials: "include" })
+      auth = await fetch("https://n1tier.alwaysdata.net/api/me.php", { credentials: "include" })
           .then(r => r.json())
           .catch(() => ({ authenticated: false }));
 
@@ -124,7 +124,7 @@ function setupDeleteActions() {
         btn.addEventListener("click", async () => {
             const id = btn.dataset.id;
 
-            const res = await fetch("http://localhost/api/delete_tierlist.php", {
+            const res = await fetch("https://n1tier.alwaysdata.net/api/delete_tierlist.php", {
                 method: "POST",
                 credentials: "include",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -169,8 +169,6 @@ function setupUpdateActions() {
 // ------------------------------------------------------------
 // HEADER BUTTONS
 // ------------------------------------------------------------
-
 document.getElementById("go-community").addEventListener("click", () => {
     window.location.href = "/pages/community/";
 });
-

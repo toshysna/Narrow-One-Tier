@@ -83,7 +83,7 @@ function setupShareButton() {
 
   btn.addEventListener("click", async () => {
 
-    const auth = await fetch("http://localhost/api/me.php", { credentials: "include" })
+    const auth = await fetch("https://n1tier.alwaysdata.net/api/me.php", { credentials: "include" })
       .then(r => r.json());
 
     if (!auth.authenticated) {
@@ -107,7 +107,7 @@ function setupShareButton() {
     if (document.body.classList.contains("page-skins")) type = "skin";
     if (document.body.classList.contains("page-melees")) type = "melee";
 
-    const res = await fetch("http://localhost/api/share.php", {
+    const res = await fetch("https://n1tier.alwaysdata.net/api/share.php", {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -117,9 +117,9 @@ function setupShareButton() {
     const json = await res.json();
 
     if (json.success) {
-    playRiveShareToast();
-    return;
-}
+        playRiveShareToast();
+        return;
+    }
   });
 }
 
@@ -203,15 +203,12 @@ function playRiveLoginToast() {
     const wrapper = document.getElementById("rive-toast-wrapper");
     wrapper.classList.add("show");
 
-    // Récupère les inputs de la state machine
     const inputs = riveLogin.stateMachineInputs("State Machine 1");
     const trigger = inputs.find(i => i.type === "trigger");
 
-    // Déclenche l'animation
     if (trigger) trigger.fire();
     else riveLogin.play();
 
-    // Quand l'animation se termine → cacher le toast
     riveLogin.on("stop", () => {
         wrapper.classList.remove("show");
     });
@@ -231,4 +228,3 @@ function playRiveShareToast() {
         wrapper.classList.remove("show");
     });
 }
-
