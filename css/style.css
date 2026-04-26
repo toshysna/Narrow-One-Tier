@@ -218,6 +218,11 @@ font-family: "BlueNight-Regular";
   font-size: 23px;
   -webkit-text-stroke: 1px black;
   text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.9);
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
 }
 
 .text-left-button { text-align: right; min-width: 90px; }
@@ -277,6 +282,10 @@ font-family: "BlueNight-Regular";
   -webkit-text-stroke: 1px black;
   text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.9);
   font-family: "BlueNight-Regular";
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 /* LOGIN : enlever fond blanc */
