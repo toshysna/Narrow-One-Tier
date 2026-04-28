@@ -57,7 +57,7 @@ function renderTierlists() {
     }
 
     const category = document.getElementById("filter-category")?.value || "all";
-    const sort = document.getElementById("filter-sort")?.value || "recent";
+    const sort = document.getElementById("filter-sort")?.value || "popular";
 
     let filtered = [...ALL_TIERLISTS];
 
