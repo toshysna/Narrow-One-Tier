@@ -5,6 +5,11 @@ let auth = { authenticated: false };
 let PAGE_SIZE = 5;
 let currentIndex = 0;
 
+// ⭐ LOADER (AJOUT)
+const loader = document.getElementById("loader");
+function showLoader() { loader.style.display = "block"; }
+function hideLoader() { loader.style.display = "none"; }
+
 // Chargement des tierlists
 fetch("https://n1tier.alwaysdata.net/api/get_tierlists.php", { credentials: "include" })
   .then(res => res.json())
@@ -53,6 +58,9 @@ function formatDateEN(dateString) {
 // RENDER AVEC FILTRES + SCORE + UPVOTE/DOWNVOTE
 // ------------------------------------------------------------
 function renderTierlists() {
+
+    showLoader(); // ⭐ AJOUT
+
     const container = document.getElementById("community-container");
 
     if (currentIndex === 0) {
@@ -61,6 +69,7 @@ function renderTierlists() {
 
     if (!ALL_TIERLISTS.length) {
         container.innerHTML = "<div class='loading'>No tierlists shared yet.</div>";
+        hideLoader(); // ⭐ AJOUT
         return;
     }
 
@@ -166,6 +175,8 @@ function renderTierlists() {
     setupDeleteActions();
     setupUpdateActions();
     setupVotes();
+
+    hideLoader(); // ⭐ AJOUT
 }
 
 
