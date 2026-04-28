@@ -19,11 +19,11 @@ fetch("https://n1tier.alwaysdata.net/api/get_tierlists.php", { credentials: "inc
       }));
 
       // ⭐ POPULAR PAR DÉFAUT
-      document.getElementById("filter-sort").value = "recent";
+      document.getElementById("filter-sort").value = "popular";
 
       // ⭐ Mettre à jour le dropdown custom
       const sortDropdown = document.querySelector('[data-filter="sort"] .filter-selected');
-      if (sortDropdown) sortDropdown.textContent = "Recent";
+      if (sortDropdown) sortDropdown.textContent = "Popular";
 
       renderTierlists();
   })
