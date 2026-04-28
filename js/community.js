@@ -1,6 +1,10 @@
 let ALL_TIERLISTS = [];
 let auth = { authenticated: false };
 
+// ⭐ INFINITE SCROLL
+let PAGE_SIZE = 5;
+let currentIndex = 0;
+
 // Chargement des tierlists
 fetch("https://n1tier.alwaysdata.net/api/get_tierlists.php", { credentials: "include" })
   .then(res => res.json())
@@ -25,6 +29,7 @@ fetch("https://n1tier.alwaysdata.net/api/get_tierlists.php", { credentials: "inc
       const sortDropdown = document.querySelector('[data-filter="sort"] .filter-selected');
       if (sortDropdown) sortDropdown.textContent = "Popular";
 
+      currentIndex = 0; // ⭐ INFINITE SCROLL RESET
       renderTierlists();
   })
   .catch(err => {
@@ -49,7 +54,10 @@ function formatDateEN(dateString) {
 // ------------------------------------------------------------
 function renderTierlists() {
     const container = document.getElementById("community-container");
-    container.innerHTML = "";
+
+    if (currentIndex === 0) {
+        container.innerHTML = ""; // ⭐ INFINITE SCROLL : reset uniquement au début
+    }
 
     if (!ALL_TIERLISTS.length) {
         container.innerHTML = "<div class='loading'>No tierlists shared yet.</div>";
@@ -75,8 +83,10 @@ function renderTierlists() {
         filtered.sort((a, b) => b.score - a.score);
     }
 
-    // RENDER
-    filtered.forEach(t => {
+    // ⭐ INFINITE SCROLL : slice
+    const slice = filtered.slice(0, currentIndex + PAGE_SIZE);
+
+    slice.forEach(t => {
         const isOwner = auth.authenticated && auth.user.id == t.user_id;
 
         container.innerHTML += `
@@ -150,10 +160,12 @@ function renderTierlists() {
         `;
     });
 
+    currentIndex = slice.length; // ⭐ INFINITE SCROLL : avancer l’index
+
     setupOptionsMenu();
     setupDeleteActions();
     setupUpdateActions();
-    setupVotes(); // ⭐ activation du système de vote
+    setupVotes();
 }
 
 
@@ -234,8 +246,15 @@ function setupUpdateActions() {
 // ------------------------------------------------------------
 // 4) LISTENERS DES FILTRES
 // ------------------------------------------------------------
-document.getElementById("filter-category")?.addEventListener("change", renderTierlists);
-document.getElementById("filter-sort")?.addEventListener("change", renderTierlists);
+document.getElementById("filter-category")?.addEventListener("change", () => {
+    currentIndex = 0; // ⭐ INFINITE SCROLL RESET
+    renderTierlists();
+});
+
+document.getElementById("filter-sort")?.addEventListener("change", () => {
+    currentIndex = 0; // ⭐ INFINITE SCROLL RESET
+    renderTierlists();
+});
 
 
 // ------------------------------------------------------------
@@ -266,6 +285,7 @@ document.querySelectorAll(".filter-dropdown").forEach(drop => {
                 document.getElementById("filter-sort").value = value;
             }
 
+            currentIndex = 0; // ⭐ INFINITE SCROLL RESET
             renderTierlists();
         });
     });
@@ -425,3 +445,15 @@ function playRiveUpvote() {
         wrapper.classList.remove("show");
     });
 }
+
+
+// ------------------------------------------------------------
+// ⭐ INFINITE SCROLL LISTENER
+// ------------------------------------------------------------
+window.addEventListener("scroll", () => {
+    const bottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
+
+    if (bottom) {
+        renderTierlists();
+    }
+});
