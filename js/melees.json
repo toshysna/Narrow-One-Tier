@@ -393,5 +393,15 @@
     "id": "xmas_present_hammer",
     "name": "XMAS PRESENT HAMMER",
     "image": "assets/melees/XMAS PRESENT HAMMER.png"
+  },
+  {
+    "id": "bone",
+    "name": "BONE",
+    "image": "assets/melees/Bone.png"
+  },
+  {
+    "id": "rapier",
+    "name": "RAPIER",
+    "image": "assets/melees/Rapier.png"
   }
 ]
