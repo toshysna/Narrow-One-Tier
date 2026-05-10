@@ -6,63 +6,56 @@ let PAGE_SIZE = 5;
 let currentIndex = 0;
 
 // ⭐ LOADER
-let loader = null;
-
-document.addEventListener("DOMContentLoaded", () => {
-    loader = document.getElementById("loader");
-    showLoader(); // loader centré au début
-});
-
+const loader = document.getElementById("loader");
 function showLoader() {
     if (loader) loader.style.display = "block";
 }
-
 function hideLoader() {
     if (loader) loader.style.display = "none";
 }
 
-function placeLoaderAtBottom() {
-    const container = document.getElementById("community-container");
-    if (loader) container.appendChild(loader);
-}
+// 🔥 Afficher le loader pendant le chargement initial
+showLoader();
 
-// ------------------------------------------------------------
-// FETCH INITIAL
-// ------------------------------------------------------------
+// Chargement des tierlists
 fetch("https://n1tier.alwaysdata.net/api/get_tierlists.php", { credentials: "include" })
     .then(res => res.json())
     .then(async list => {
 
+        // Récupérer l'utilisateur connecté
         auth = await fetch("https://n1tier.alwaysdata.net/api/me.php", { credentials: "include" })
             .then(r => r.json())
             .catch(() => ({ authenticated: false }));
 
+        // ⭐ FIX : convertir score et user_vote en nombres
         ALL_TIERLISTS = list.map(t => ({
             ...t,
             score: Number(t.score),
             user_vote: Number(t.user_vote)
         }));
 
+        // ⭐ POPULAR PAR DÉFAUT
         document.getElementById("filter-sort").value = "popular";
+
+        // ⭐ Mettre à jour le dropdown custom
         const sortDropdown = document.querySelector('[data-filter="sort"] .filter-selected');
         if (sortDropdown) sortDropdown.textContent = "Popular";
 
-        currentIndex = 0;
+        currentIndex = 0; // ⭐ INFINITE SCROLL RESET
         renderTierlists();
-        hideLoader(); // cacher après premier rendu
+        hideLoader(); // 🔥 on cache le loader après le premier rendu
     })
     .catch(err => {
         const container = document.getElementById("community-container");
-        container.innerHTML = "<div class='loading'>Failed to load tierlists.</div>";
+        if (container) {
+            container.innerHTML = "<div class='loading'>Failed to load tierlists.</div>";
+        }
         hideLoader();
     });
 
-
-// ------------------------------------------------------------
-// FORMAT DATE
-// ------------------------------------------------------------
 function formatDateEN(dateString) {
     const date = new Date(dateString);
+
     return date.toLocaleDateString("en-US", {
         month: "long",
         day: "numeric",
@@ -70,19 +63,22 @@ function formatDateEN(dateString) {
     });
 }
 
-
 // ------------------------------------------------------------
-// RENDER
+// RENDER AVEC FILTRES + SCORE + UPVOTE/DOWNVOTE
 // ------------------------------------------------------------
 function renderTierlists() {
     const container = document.getElementById("community-container");
+    if (!container) return;
 
-    // enlever anciens messages
-    container.querySelectorAll(".loading").forEach(m => m.remove());
+    // 🔧 On enlève les anciens messages "loading" / "no tierlists"
+    const oldMessages = container.querySelectorAll(".loading");
+    oldMessages.forEach(m => m.remove());
 
-    // enlever anciennes cartes
-    container.querySelectorAll(".tierlist-card").forEach(c => c.remove());
+    // 🔧 NE JAMAIS VIDER TOUT LE CONTAINER → on garde le loader
+    const oldCards = container.querySelectorAll(".tierlist-card");
+    oldCards.forEach(card => card.remove());
 
+    // 🔧 Si aucune tierlist
     if (!ALL_TIERLISTS.length) {
         container.insertAdjacentHTML(
             "beforeend",
@@ -96,17 +92,29 @@ function renderTierlists() {
 
     let filtered = [...ALL_TIERLISTS];
 
-    if (category !== "all") filtered = filtered.filter(t => t.type === category);
-    if (sort === "recent") filtered.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-    if (sort === "popular") filtered.sort((a, b) => b.score - a.score);
+    // FILTRE PAR TYPE
+    if (category !== "all") {
+        filtered = filtered.filter(t => t.type === category);
+    }
 
+    // TRI
+    if (sort === "recent") {
+        filtered.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+    }
+
+    if (sort === "popular") {
+        filtered.sort((a, b) => b.score - a.score);
+    }
+
+    // ⭐ INFINITE SCROLL : slice
     const slice = filtered.slice(0, currentIndex + PAGE_SIZE);
 
     slice.forEach(t => {
         const isOwner = auth.authenticated && auth.user.id == t.user_id;
 
-        container.insertAdjacentHTML("beforeend", `
+        container.innerHTML += `
             <div class="tierlist-card" id="card-${t.id}">
+
                 ${isOwner ? `
                     <div class="options-menu">
                         <img src="/assets/icons/dots.svg" class="more-icon" data-id="${t.id}" data-type="${t.type}">
@@ -114,66 +122,77 @@ function renderTierlists() {
                             <div class="dropdown-item update" data-type="${t.type}">Update</div>
                             <div class="dropdown-item delete" data-id="${t.id}">Delete</div>
                         </div>
-                    </div>` : ""}
+                    </div>
+                ` : ""}
 
                 <div class="author-row">
                     <div class="author-left">
-                        <img class="avatar" src="${t.avatar}">
+                        <img class="avatar" src="${t.avatar}" alt="avatar">
                         <div class="info">
-                            <span class="username">${t.global_name || t.username}
-                                ${isOwner ? "<span style='opacity:0.6'>(you)</span>" : ""}
-                            </span>
+                            <span class="username">
+                            ${t.global_name || t.username}
+                            ${auth.authenticated && auth.user.id == t.user_id ? "<span style='opacity:0.6'>(you)</span>" : ""}
+                           </span>
+
                             <span class="date">Updated on ${formatDateEN(t.updated_at)}</span>
                         </div>
                     </div>
+
                     <div class="author-right">
                         <img src="/assets/icons/${t.type}.png" class="type-icon">
                         <span class="type-text">${t.type}</span>
                     </div>
                 </div>
 
+
                 <div class="tierlist-preview">
-                    <img src="${t.data}" class="tierlist-image">
+                    <img src="${t.data}" class="tierlist-image" alt="tierlist" />
                 </div>
 
+                <!-- ⭐ UPVOTE / DOWNVOTE ⭐ -->
                 <div class="vote-row">
+
                     <div class="vote-section">
+
                         <span class="upvote ${t.user_vote == 1 ? "active" : ""}" data-id="${t.id}">
                             <svg viewBox="0 0 24 24" class="vote-icon">
                                 <path d="M12 4 L4 14 H10 V20 H14 V14 H20 Z"/>
                             </svg>
                         </span>
+
                         <span class="score" id="score-${t.id}">${t.score}</span>
+
                         <span class="downvote ${t.user_vote == -1 ? "active" : ""}" data-id="${t.id}">
                             <svg viewBox="0 0 24 24" class="vote-icon">
                                 <path d="M12 20 L4 10 H10 V4 H14 V10 H20 Z"/>
                             </svg>
                         </span>
+
                     </div>
 
                     <div class="expand-container">
-                        <img src="/assets/icons/fullScreen.svg" class="expand-icon" data-full="${t.data}">
+                        <img src="/assets/icons/fullScreen.svg"
+                             class="expand-icon"
+                             data-full="${t.data}"
+                             alt="expand">
                     </div>
+
                 </div>
+
             </div>
-        `);
+        `;
     });
 
-    currentIndex = slice.length;
+    currentIndex = slice.length; // ⭐ INFINITE SCROLL : avancer l’index
 
     setupOptionsMenu();
     setupDeleteActions();
     setupUpdateActions();
     setupVotes();
-
-    // ⭐ placer loader en bas après ajout
-    placeLoaderAtBottom();
-    hideLoader();
 }
 
-
 // ------------------------------------------------------------
-// OPTIONS MENU
+// 1) Ouvrir / fermer le menu ⋮
 // ------------------------------------------------------------
 function setupOptionsMenu() {
     document.querySelectorAll(".more-icon").forEach(icon => {
@@ -195,9 +214,8 @@ function setupOptionsMenu() {
     });
 }
 
-
 // ------------------------------------------------------------
-// DELETE
+// 2) DELETE
 // ------------------------------------------------------------
 function setupDeleteActions() {
     document.querySelectorAll(".dropdown-item.delete").forEach(btn => {
@@ -221,9 +239,8 @@ function setupDeleteActions() {
     });
 }
 
-
 // ------------------------------------------------------------
-// UPDATE
+// 3) UPDATE
 // ------------------------------------------------------------
 function setupUpdateActions() {
     document.querySelectorAll(".dropdown-item.update").forEach(btn => {
@@ -245,25 +262,61 @@ function setupUpdateActions() {
     });
 }
 
-
 // ------------------------------------------------------------
-// FILTERS
+// 4) LISTENERS DES FILTRES
 // ------------------------------------------------------------
 document.getElementById("filter-category")?.addEventListener("change", () => {
     currentIndex = 0;
-    showLoader();
     renderTierlists();
 });
 
 document.getElementById("filter-sort")?.addEventListener("change", () => {
     currentIndex = 0;
-    showLoader();
     renderTierlists();
 });
 
+// ------------------------------------------------------------
+// 5) DROPDOWN CUSTOM POUR LES FILTRES
+// ------------------------------------------------------------
+document.querySelectorAll(".filter-dropdown").forEach(drop => {
+    const selected = drop.querySelector(".filter-selected");
+    const options = drop.querySelector(".filter-options");
+
+    selected.addEventListener("click", () => {
+        document.querySelectorAll(".filter-options").forEach(o => {
+            if (o !== options) o.classList.add("hidden");
+        });
+        options.classList.toggle("hidden");
+    });
+
+    drop.querySelectorAll(".filter-option").forEach(opt => {
+        opt.addEventListener("click", () => {
+            selected.textContent = opt.textContent;
+            options.classList.add("hidden");
+
+            const filterType = drop.dataset.filter;
+            const value = opt.dataset.value;
+
+            if (filterType === "category") {
+                document.getElementById("filter-category").value = value;
+            } else {
+                document.getElementById("filter-sort").value = value;
+            }
+
+            currentIndex = 0;
+            renderTierlists();
+        });
+    });
+});
+
+document.addEventListener("click", e => {
+    if (!e.target.closest(".filter-dropdown")) {
+        document.querySelectorAll(".filter-options").forEach(o => o.classList.add("hidden"));
+    }
+});
 
 // ------------------------------------------------------------
-// UPVOTES
+// ⭐ 6) UPVOTE / DOWNVOTE
 // ------------------------------------------------------------
 function setupVotes() {
     document.querySelectorAll(".upvote").forEach(btn => {
@@ -319,9 +372,19 @@ async function sendVote(id, vote) {
     downEl.classList.toggle("active", newVote === -1);
 }
 
+// ------------------------------------------------------------
+// NAV
+// ------------------------------------------------------------
+document.getElementById("back-maker").addEventListener("click", () => {
+    window.location.href = "/pages/map-tierlist/";
+});
+
+document.getElementById("my-profile").addEventListener("click", () => {
+    window.location.href = "/pages/profile/";
+});
 
 // ------------------------------------------------------------
-// IMAGE VIEWER
+// ⭐ 7) IMAGE VIEWER
 // ------------------------------------------------------------
 document.addEventListener("click", (e) => {
     if (e.target.classList.contains("expand-icon")) {
@@ -348,9 +411,8 @@ document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeImageViewer();
 });
 
-
 // ------------------------------------------------------------
-// RIVE UPVOTE
+// RIVE UPVOTE ANIMATION
 // ------------------------------------------------------------
 let riveUpvote;
 
@@ -372,6 +434,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// ------------------------------------------------------------
+// PLAY UPVOTE ANIMATION
+// ------------------------------------------------------------
 function playRiveUpvote() {
     const wrapper = document.getElementById("rive-upvote-wrapper");
     wrapper.classList.add("show");
@@ -387,16 +452,13 @@ function playRiveUpvote() {
     });
 }
 
-
 // ------------------------------------------------------------
-// INFINITE SCROLL
+// ⭐ INFINITE SCROLL LISTENER
 // ------------------------------------------------------------
 window.addEventListener("scroll", () => {
     const bottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
 
     if (bottom) {
-        showLoader();
-        placeLoaderAtBottom();
         renderTierlists();
     }
 });
